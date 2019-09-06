@@ -21,6 +21,10 @@ public class DamageReceiver : MonoBehaviour
     public delegate void DeathEvent(DamageReceiver dr);
     public event DeathEvent OnDeath;
 
+    // Method in charge of making this DamageReceiver have it's health decrement & receive knockback.
+    // Takes in parameter damage of type DamagePacket.
+    // DamagePackets are 3 parts: DamageType, DamageAmount, and KnockbackVector.
+    // DamagePackets MUST define a DamageType, but defining DamageAmount and KnockbackVector are optional (will default to 1 and Vector2.zero, respectively)
     public void TakeDamage(DamagePacket damage)
     {
         //If this DamageReciever isn't resistant to the type of damage it's taking, subtract the damage from health.
