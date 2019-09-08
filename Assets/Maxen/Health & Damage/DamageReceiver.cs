@@ -5,8 +5,11 @@ using UnityEngine;
 //Put this class on something if you want it to take damage.
 public class DamageReceiver : MonoBehaviour
 {
+    protected static Color DamageFlashColor = Color.red;
+    const float DamageFlashDuration = 0.1f;
+
     //If you want to adjust health externally, use TakeDamage()
-    protected int _health = 1;
+    [SerializeField]protected int _health = 1;
     public int Health
     {
         get { return _health; }
@@ -18,8 +21,9 @@ public class DamageReceiver : MonoBehaviour
     public bool ResistKnockback = false;
 
     //Event information for when this DamageReciever "dies"
-    public delegate void DeathEvent(DamageReceiver dr);
-    public event DeathEvent OnDeath;
+    public delegate void DamageReceiverEvent(DamageReceiver dr);
+    public event DamageReceiverEvent OnDeath;
+    public event DamageReceiverEvent OnTakeDamage;
 
     // Method in charge of making this DamageReceiver have it's health decrement & receive knockback.
     // Takes in parameter damage of type DamagePacket.
@@ -31,16 +35,21 @@ public class DamageReceiver : MonoBehaviour
         if(!ResistCollisionDamage && damage.Type == DamageType.COLLISION || !ResistProjectileDamage && damage.Type == DamageType.PROJECTILE)
         {
             _health -= damage.DamageAmount;
-
-            //If there is a rigidbody2D on this GameObject and this DamageReciever doesn't resist knockback, apply knockback from DamagePacket.
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            if(rb && !ResistKnockback)
+            if(damage.DamageAmount > 0 && DamageFlashCoroutine == null)
             {
-                rb.AddForce(damage.KnockbackVector);
+                OnTakeDamage?.Invoke(this);
+                DamageFlashCoroutine = StartCoroutine(DamageFlash());
             }
         }
 
-        if(_health < 0)
+        //If there is a rigidbody2D on this GameObject and this DamageReciever doesn't resist knockback, apply knockback from DamagePacket.
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb && !ResistKnockback)
+        {
+            rb.AddForce(damage.KnockbackVector, ForceMode2D.Impulse);
+        }
+
+        if (_health <= 0)
         {
             Death();
         }
@@ -53,5 +62,21 @@ public class DamageReceiver : MonoBehaviour
         _health = -1;
 
         OnDeath?.Invoke(this);
+    }
+
+    public SpriteRenderer UnitSpriteRenderer;
+    protected Coroutine DamageFlashCoroutine;
+
+    protected virtual IEnumerator DamageFlash()
+    {
+        if(UnitSpriteRenderer)
+        {
+            Color originalColor = UnitSpriteRenderer.color;
+            UnitSpriteRenderer.color = DamageFlashColor;
+            yield return new WaitForSeconds(DamageFlashDuration);
+            UnitSpriteRenderer.color = originalColor;
+        }
+
+        DamageFlashCoroutine = null;
     }
 }

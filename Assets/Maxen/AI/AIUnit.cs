@@ -16,33 +16,67 @@ public class AIUnit : MonoBehaviour
     //Probably want to retrieve this from some sort of GameManager class
     public Transform playerTransform;
 
-    public bool LetProcessAI = false;
+    public AIMoveScript movement;
+    //weaponScript;
+
+    public bool LetProcessAI = true;
+    [SerializeField]
+    protected bool _isProcessing = false;
+
+    protected virtual void Start()
+    {
+        DamageReceiver dr = GetComponent<DamageReceiver>();
+        if(dr)
+        {
+            dr.OnDeath += DefaultOnDeath;
+        }
+    }
 
     protected virtual void FixedUpdate()
     {
+        if(!LetProcessAI)
+        {
+            return;
+        }
+
         float sqrDistanceToPlayer = 0.0f;
         if (playerTransform)
         {
             sqrDistanceToPlayer = (transform.position - playerTransform.position).sqrMagnitude;
         }
-
-        if (LetProcessAI)
+        
+        if (_isProcessing)
         {
             ProcessAI();
             if (sqrDistanceToPlayer > StopProcessUnitSquareDistance)
             {
-                LetProcessAI = false;
+                _isProcessing = false;
             }
         }
         else if(sqrDistanceToPlayer < StartProcessUnitSquareDistance)
         {
-            LetProcessAI = true;
+            _isProcessing = true;
         }
     }
 
-    //Where to process most of the AIs behaviors. Updates on Time.deltaTime.   
+    //Where to process most of the AIs behaviors. Updates on Time.fixedDeltaTime.   
     protected virtual void ProcessAI()
     {
-        //Overriden in inheriting classes.
+        if(movement)
+        {
+            movement.ProcessMovement(Time.fixedDeltaTime);
+        }
+    }
+
+    protected virtual void DefaultOnDeath(DamageReceiver dr)
+    {
+        LetProcessAI = false;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if(rb)
+        {
+            rb.gravityScale = 1.0f;
+        }
+
+        Destroy(gameObject, 3.0f);
     }
 }
