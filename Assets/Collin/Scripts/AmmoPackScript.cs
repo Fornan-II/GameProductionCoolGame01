@@ -20,7 +20,7 @@ public class AmmoPackScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hit)
     {
-        if (hit.tag == "Player")
+        if (hit.tag.Contains("Player"))
         {
             PlayerScript.Instance.AddAmmo(ammoToAdd);
             Destroy(gameObject);

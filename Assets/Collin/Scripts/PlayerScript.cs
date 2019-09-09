@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     //Multipliers added to the player for movement/rotation
     [SerializeField] private float knockbackMultiplier = 0;
     [SerializeField] private float torqueMultiplier = 0;
+    [SerializeField] private float maxAngularVelocity = 3.0f;
     private bool switchDirection = false;
 
     [SerializeField] private GameObject background;
@@ -74,8 +75,9 @@ public class PlayerScript : MonoBehaviour
 
         while (alive)
         {
-            yield return new WaitForFixedUpdate();
-            if (Input.GetMouseButtonDown(0))
+            //yield return new WaitForFixedUpdate();
+            yield return null;
+            if (Input.GetButtonDown("Fire1"))
             {
                 if (currentBulletAmount > 0)
                     Shoot();
@@ -87,6 +89,19 @@ public class PlayerScript : MonoBehaviour
     {
         CameraMovement();
         BackgroundScroll();
+
+        //Clamp player's angular velocity so the player's rotation stays comprehensible
+        if(Mathf.Abs(playerRig.angularVelocity) > maxAngularVelocity)
+        {
+            if(playerRig.angularVelocity < 0.0f)
+            {
+                playerRig.angularVelocity = -maxAngularVelocity;
+            }
+            else
+            {
+                playerRig.angularVelocity = maxAngularVelocity;
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D hit)

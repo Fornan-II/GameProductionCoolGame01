@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Maxen/AIScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Master Scenes/Master Game Scene.unity
+    guid: 52429163c522ab74cb633e6bbe13c1fc
   - enabled: 1
     path: Assets/Nicole/TestScene.unity
     guid: c2a3cf5ef4c17ab4fb8c7306dc3d29d4

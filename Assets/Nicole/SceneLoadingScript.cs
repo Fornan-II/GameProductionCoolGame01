@@ -22,7 +22,10 @@ public class SceneLoadingScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        LoadNextLevel();
+        if (collision.gameObject.tag.Contains("Player"))
+        {
+            LoadNextLevel();
+        }
     }
 
     public void LoadNextLevel()

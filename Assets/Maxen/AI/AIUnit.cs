@@ -14,7 +14,6 @@ public class AIUnit : MonoBehaviour
     protected const float StopProcessUnitSquareDistance = 30.0f * 30.0f;
 
     //Probably want to retrieve this from some sort of GameManager class
-    public Transform playerTransform;
 
     public AIMoveScript movement;
     //weaponScript;
@@ -25,7 +24,6 @@ public class AIUnit : MonoBehaviour
 
     protected virtual void Start()
     {
-        playerTransform = PlayerScript.Instance.transform;
         DamageReceiver dr = GetComponent<DamageReceiver>();
         if(dr)
         {
@@ -41,9 +39,9 @@ public class AIUnit : MonoBehaviour
         }
 
         float sqrDistanceToPlayer = 0.0f;
-        if (playerTransform)
+        if (PlayerScript.Instance)
         {
-            sqrDistanceToPlayer = (transform.position - playerTransform.position).sqrMagnitude;
+            sqrDistanceToPlayer = (transform.position - PlayerScript.Instance.transform.position).sqrMagnitude;
         }
         
         if (_isProcessing)
