@@ -35,11 +35,15 @@ public class DamageReceiver : MonoBehaviour
         if(!ResistCollisionDamage && damage.Type == DamageType.COLLISION || !ResistProjectileDamage && damage.Type == DamageType.PROJECTILE)
         {
             _health -= damage.DamageAmount;
-            if(damage.DamageAmount > 0 && DamageFlashCoroutine == null)
+            if(damage.DamageAmount > 0)
             {
                 OnTakeDamage?.Invoke(this);
-                DamageFlashCoroutine = StartCoroutine(DamageFlash());
             }
+        }
+
+        if(damage.DamageAmount > 0 && DamageFlashCoroutine == null)
+        {
+            DamageFlashCoroutine = StartCoroutine(DamageFlash());
         }
 
         //If there is a rigidbody2D on this GameObject and this DamageReciever doesn't resist knockback, apply knockback from DamagePacket.
