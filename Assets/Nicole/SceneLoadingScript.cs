@@ -20,7 +20,7 @@ public class SceneLoadingScript : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         LoadNextLevel();
     }
