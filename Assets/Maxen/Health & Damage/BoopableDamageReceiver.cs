@@ -8,6 +8,7 @@ public class BoopableDamageReceiver : DamageReceiver
     public float DamageRecievingAngle = 180.0f;
 
     public float knockbackStrength = 3.0f;
+    public float boopBoost = 13.0f;
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
@@ -25,7 +26,8 @@ public class BoopableDamageReceiver : DamageReceiver
         if (Vector2.Angle(transform.up, vectorToContact) < DamageRecievingAngle * 0.5f)
         {
             //This DR is taking damage
-            collision.rigidbody?.AddForce(-knockbackVector, ForceMode2D.Impulse);
+            //collision.rigidbody?.AddForce(-knockbackVector, ForceMode2D.Impulse);
+            collision.rigidbody?.AddForce(Vector2.up * boopBoost, ForceMode2D.Impulse);
             TakeDamage(new DamagePacket(DamageType.COLLISION, knockbackVector));
         }
         else
