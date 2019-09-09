@@ -25,6 +25,7 @@ public class AIUnit : MonoBehaviour
 
     protected virtual void Start()
     {
+        playerTransform = PlayerScript.Instance.transform;
         DamageReceiver dr = GetComponent<DamageReceiver>();
         if(dr)
         {

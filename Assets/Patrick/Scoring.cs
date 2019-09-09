@@ -17,6 +17,6 @@ public class Scoring : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerScore.text = playerMovement.position.ToString;
+        playerScore.text = playerMovement.position.ToString();
     }
 }
