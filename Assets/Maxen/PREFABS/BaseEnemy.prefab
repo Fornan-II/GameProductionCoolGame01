@@ -104,7 +104,7 @@ MonoBehaviour:
   ResistKnockback: 0
   UnitSpriteRenderer: {fileID: 6876616101651125817}
   DamageRecievingAngle: 140
-  knockbackStrength: 7
+  knockbackStrength: 13
 --- !u!61 &6876616101651125815
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -182,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f3071bf21217b458b5d2d39804737e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
   movement: {fileID: 6876616101651125820}
   LetProcessAI: 1
   _isProcessing: 0
