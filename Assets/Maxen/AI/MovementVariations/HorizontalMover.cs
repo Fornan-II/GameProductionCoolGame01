@@ -16,7 +16,7 @@ public class HorizontalMover : AIMoveScript
     {
         base.Start();
 
-        preferredYLevel = transform.position.y;
+        preferredYLevel = transform.localPosition.y;
     }
 
     public override void ProcessMovement(float deltaTime)
@@ -24,7 +24,7 @@ public class HorizontalMover : AIMoveScript
         base.ProcessMovement(deltaTime);
         
         //Calculate moveVelocity
-        Vector2 newVelocity = Vector2.left + Vector2.up * (preferredYLevel - transform.position.y);
+        Vector2 newVelocity = Vector2.left + Vector2.up * (preferredYLevel - transform.localPosition.y);
         newVelocity = newVelocity.normalized * moveSpeed;
         if(movingRight)
         {

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6876616101651125816}
   - component: {fileID: 6876616101651125815}
   - component: {fileID: 6876616101651125814}
-  - component: {fileID: 6876616101651125819}
   - component: {fileID: 6876616101651125820}
   - component: {fileID: 6876616101651125821}
   m_Layer: 9
@@ -99,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a63e384c428fe64ea78b747fa068ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
+  _health: 2
   ResistProjectileDamage: 0
   ResistCollisionDamage: 0
   ResistKnockback: 0
@@ -153,25 +152,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &6876616101651125819
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6876616101651125813}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a095e3f201a4a5c42b227e5f216f7fa7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 1
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &6876616101651125820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a671c4bb4e0575418d5f33b4a033192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
   movingRight: 0
   lerpRate: 0.3
   movementReversingLayers:
