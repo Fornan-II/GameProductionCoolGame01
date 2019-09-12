@@ -22,6 +22,8 @@ public class AIUnit : MonoBehaviour
     [SerializeField]
     protected bool _isProcessing = false;
 
+    public int DeathAmmoReward = 3;
+
     protected virtual void Start()
     {
         DamageReceiver dr = GetComponent<DamageReceiver>();
@@ -75,6 +77,8 @@ public class AIUnit : MonoBehaviour
         {
             rb.gravityScale = 1.0f;
         }
+
+        PlayerScript.Instance?.AddAmmo(DeathAmmoReward);
 
         Destroy(gameObject, 3.0f);
     }

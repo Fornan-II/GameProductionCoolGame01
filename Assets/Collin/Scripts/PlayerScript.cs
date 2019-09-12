@@ -11,6 +11,9 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D playerRig;
 
     private bool alive = false;
+    private bool dying = false;
+
+    [SerializeField] private int timeTilStart = 10;
 
     //Where the bullet will spawn
     [SerializeField] private Transform bulletSpawnPosition;
@@ -22,11 +25,9 @@ public class PlayerScript : MonoBehaviour
     //Multipliers added to the player for movement/rotation
     [SerializeField] private float knockbackMultiplier = 0;
     [SerializeField] private float torqueMultiplier = 0;
-    [SerializeField] private float maxAngularVelocity = 3.0f;
     private bool switchDirection = false;
 
     [SerializeField] private GameObject background;
-    [SerializeField] private GameObject ground;
 
     [SerializeField] private float shakeAmount = 1;
 
@@ -37,8 +38,11 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField]
     private GameObject playerUI;
-
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI gameOverText;
+
+    [SerializeField] private int timeTilDeath = 5;
+    [SerializeField] private int timeTilDeathBuffer = 10;
 
     private void Start()
     {
@@ -54,67 +58,53 @@ public class PlayerScript : MonoBehaviour
         currentBulletAmount = startingBulletAmount;
         bulletText.text = currentBulletAmount.ToString();
 
-        StartCoroutine(PlayerInput());
+        CountDownToStart(timeTilStart);
+
+
     }
 
     private IEnumerator PlayerInput()
     {
-        int timeTilStart = 5;
-        while (timeTilStart != 0)
-        {
-            timerText.text = timeTilStart.ToString();
-            yield return new WaitForSecondsRealtime(1);
-            timeTilStart--;
-        }
-        timerText.text = "";
-
         playerRig.AddForce(Vector2.up * knockbackMultiplier);
         playerRig.AddTorque(torqueMultiplier, ForceMode2D.Impulse);
 
         alive = true;
-
         while (alive)
         {
-            //yield return new WaitForFixedUpdate();
             yield return null;
+            playerRig.angularVelocity = Mathf.Clamp(playerRig.angularVelocity, 200, Mathf.Infinity);
+           
             if (Input.GetButtonDown("Fire1"))
             {
                 if (currentBulletAmount > 0)
                     Shoot();
             }
         }
+        Die();
     }
 
     private void Update()
     {
         CameraMovement();
         BackgroundScroll();
-
-        //Clamp player's angular velocity so the player's rotation stays comprehensible
-        if(Mathf.Abs(playerRig.angularVelocity) > maxAngularVelocity)
-        {
-            if(playerRig.angularVelocity < 0.0f)
-            {
-                playerRig.angularVelocity = -maxAngularVelocity;
-            }
-            else
-            {
-                playerRig.angularVelocity = maxAngularVelocity;
-            }
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D hit)
     {
-        if(hit.transform.tag == "Floor" && alive)
+        if (hit.transform.tag == "Floor" && alive)
         {
-            alive = false;
-            //Die, or start death timer
-            Stall();
-           
+            dying = true;
+            StartCoroutine(Grounded());
         }
     }
 
+    private void OnCollisionExit2D(Collision2D hit)
+    {
+        if (hit.transform.tag == "Floor" && alive)
+        {
+            dying = false;          
+        }
+    }
     private void BackgroundScroll()
     {
         background.transform.position = new Vector3(transform.position.x, transform.position.y, background.transform.position.z);
@@ -122,8 +112,6 @@ public class PlayerScript : MonoBehaviour
         offset.x = background.transform.position.x / background.transform.localScale.x;
         offset.y = background.transform.position.y / background.transform.localScale.y;
         background.GetComponent<MeshRenderer>().material.mainTextureOffset = offset;
-
-        ground.transform.position = new Vector3(transform.position.x, ground.transform.position.y, ground.transform.position.z);
     }
     //Shakes the screen (camera)
     private void ScreenShake()
@@ -135,17 +123,20 @@ public class PlayerScript : MonoBehaviour
     {
         currentBulletAmount--;
         bulletText.text = currentBulletAmount.ToString();
-        ScreenShake();
-        playerRig.velocity = Vector3.zero;
-        playerRig.AddForce(-transform.right * knockbackMultiplier);
 
         bulletFlash.Play();
+
+        ScreenShake();
+
+        playerRig.velocity = Vector3.zero;
+        playerRig.AddForce(-transform.right * knockbackMultiplier);
 
         switchDirection = !switchDirection;
         if (switchDirection)
             playerRig.AddTorque(torqueMultiplier, ForceMode2D.Impulse);
         else
             playerRig.AddTorque(-torqueMultiplier, ForceMode2D.Impulse);
+        
         if (bulletPrefab && bulletSpawnPosition)
             Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
         else
@@ -154,7 +145,7 @@ public class PlayerScript : MonoBehaviour
     //Keeps the camera locked to the player
     private void CameraMovement()
     {
-        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
+        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z);
         playerUI.transform.position = transform.position;
     }
 
@@ -167,5 +158,59 @@ public class PlayerScript : MonoBehaviour
     public void Stall()
     {
         playerRig.velocity = Vector3.zero;
+    }
+
+    private void CountDownToStart(int aCurrentNumber)
+    {
+        if (aCurrentNumber == 0)
+        {
+            timerText.gameObject.transform.localScale = Vector3.zero;
+            StartCoroutine(PlayerInput());
+            return;
+        }
+        timerText.text = aCurrentNumber.ToString();
+        timerText.gameObject.transform.localScale = Vector3.one * 4;
+        iTween.ScaleTo(timerText.gameObject, iTween.Hash("scale", Vector3.one, "time", 1, "easetype", iTween.EaseType.easeOutElastic,
+            "oncomplete", "CountDownToStart",
+            "oncompleteparams", aCurrentNumber - 1,
+            "oncompletetarget", gameObject));
+    }
+    private void CountDownToDeath(int aCurrentNumber)
+    {
+        if (!dying)
+        {
+            timerText.gameObject.transform.localScale = Vector3.zero;
+            return;
+        }
+
+        if (aCurrentNumber == 0)
+        {
+            timerText.gameObject.transform.localScale = Vector3.zero;
+            alive = false;
+            return;
+        }
+
+        timerText.text = aCurrentNumber.ToString();
+        timerText.gameObject.transform.localScale = Vector3.one * 4;
+        iTween.ScaleTo(timerText.gameObject, iTween.Hash("scale", Vector3.one, "time", 1, "easetype", iTween.EaseType.easeOutElastic,
+            "oncomplete", "CountDownToDeath",
+            "oncompleteparams", aCurrentNumber - 1,
+            "oncompletetarget", gameObject));
+    }
+
+    private IEnumerator Grounded()
+    {
+        yield return new WaitForSeconds(timeTilDeathBuffer);
+        if (dying)
+        {
+            CountDownToDeath(timeTilDeath);
+        }
+    }
+
+    private void Die()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        gameOverText.gameObject.transform.localScale = Vector3.one * 2;
+        iTween.ScaleTo(gameOverText.gameObject, iTween.Hash("scale", Vector3.one, "time", 2, "easetype", iTween.EaseType.easeOutElastic));
     }
 }
