@@ -12,10 +12,8 @@ public class HorizontalMover : AIMoveScript
 
     public LayerMask movementReversingLayers;
 
-    protected override void Start()
+    protected virtual void Start()
     {
-        base.Start();
-
         preferredYLevel = transform.localPosition.y;
     }
 

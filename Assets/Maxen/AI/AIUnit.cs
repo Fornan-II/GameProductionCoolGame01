@@ -52,11 +52,13 @@ public class AIUnit : MonoBehaviour
             if (sqrDistanceToPlayer > StopProcessUnitSquareDistance)
             {
                 _isProcessing = false;
+                movement.DisableMovement();
             }
         }
         else if(sqrDistanceToPlayer < StartProcessUnitSquareDistance)
         {
             _isProcessing = true;
+            movement.EnableMovement();
         }
     }
 
