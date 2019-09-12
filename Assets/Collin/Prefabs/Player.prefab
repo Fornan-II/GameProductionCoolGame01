@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4244930096222552544}
   - component: {fileID: 4244930096222552559}
   - component: {fileID: 6604341057272801604}
+  - component: {fileID: 2662463948173885054}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player,CanBoop
@@ -217,20 +218,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed3beeca46d5504b8d2f6373ff0b91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeTilStart: 10
   bulletSpawnPosition: {fileID: 4244930097385760338}
   bulletPrefab: {fileID: 903772679302807151, guid: 68c9f3aaa9f47ea49be42f0133f76261,
     type: 3}
   bulletFlash: {fileID: 4244930097305153861}
   knockbackMultiplier: 900
   torqueMultiplier: 1
-  maxAngularVelocity: 500
   background: {fileID: 0}
-  ground: {fileID: 0}
   shakeAmount: 1
   bulletText: {fileID: 0}
   startingBulletAmount: 25
   playerUI: {fileID: 0}
   timerText: {fileID: 0}
+  gameOverText: {fileID: 0}
+  timeTilDeath: 5
+  timeTilDeathBuffer: 10
 --- !u!114 &6604341057272801604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +251,22 @@ MonoBehaviour:
   ResistCollisionDamage: 1
   ResistKnockback: 0
   UnitSpriteRenderer: {fileID: 4244930096222552546}
+--- !u!114 &2662463948173885054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4244930096222552558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7835857e5acfef4da3cc3c496f6ad4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityMax: -1
+  velocityMin: -1
+  spinMax: 600
+  spinMin: -1
 --- !u!1 &4244930096613504545
 GameObject:
   m_ObjectHideFlags: 0
