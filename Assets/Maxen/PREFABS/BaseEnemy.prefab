@@ -98,13 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a63e384c428fe64ea78b747fa068ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
+  _health: 1
   ResistProjectileDamage: 0
   ResistCollisionDamage: 0
   ResistKnockback: 0
   UnitSpriteRenderer: {fileID: 6876616101651125817}
   DamageRecievingAngle: 140
   knockbackStrength: 13
+  boopBoost: 13
 --- !u!61 &6876616101651125815
 BoxCollider2D:
   m_ObjectHideFlags: 0
