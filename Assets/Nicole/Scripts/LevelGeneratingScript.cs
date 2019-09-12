@@ -14,7 +14,7 @@ public class LevelGeneratingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randNum = Random.Range(1, 5);
+        randNum = Random.Range(1, 5); //Get a random number and spawn a different object depending on that number
 
         if(randNum == 1 || randNum == 4)
         {

@@ -11,7 +11,7 @@ public class RestartScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("LevelReset"); //Should probably add this to the player death script
+        StartCoroutine("LevelReset"); //Should be called when the player dies
     }
 
     // Update is called once per frame
