@@ -28,7 +28,6 @@ public class PlayerScript : MonoBehaviour
     private bool switchDirection = false;
 
     [SerializeField] private GameObject background;
-    [SerializeField] private GameObject ground;
 
     [SerializeField] private float shakeAmount = 1;
 
@@ -113,8 +112,6 @@ public class PlayerScript : MonoBehaviour
         offset.x = background.transform.position.x / background.transform.localScale.x;
         offset.y = background.transform.position.y / background.transform.localScale.y;
         background.GetComponent<MeshRenderer>().material.mainTextureOffset = offset;
-
-        ground.transform.position = new Vector3(transform.position.x, ground.transform.position.y, ground.transform.position.z);
     }
     //Shakes the screen (camera)
     private void ScreenShake()
@@ -203,7 +200,6 @@ public class PlayerScript : MonoBehaviour
 
     private IEnumerator Grounded()
     {
-        Debug.Log("heec");
         yield return new WaitForSeconds(timeTilDeathBuffer);
         if (dying)
         {
