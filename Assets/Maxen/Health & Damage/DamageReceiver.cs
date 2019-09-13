@@ -16,20 +16,22 @@ public class DamageReceiver : MonoBehaviour
     }
 
     //Info for differentiating between damage types
+    public bool CanDie = true;
     public bool ResistProjectileDamage = false;
     public bool ResistCollisionDamage = false;
     public bool ResistKnockback = false;
 
     //Event information for when this DamageReciever "dies"
     public delegate void DamageReceiverEvent(DamageReceiver dr);
+    public delegate void DamagePacketEvent(DamagePacket packet);
     public event DamageReceiverEvent OnDeath;
-    public event DamageReceiverEvent OnTakeDamage;
+    public event DamagePacketEvent OnTakeDamage;
 
     // Method in charge of making this DamageReceiver have it's health decrement & receive knockback.
     // Takes in parameter damage of type DamagePacket.
     // DamagePackets are 3 parts: DamageType, DamageAmount, and KnockbackVector.
     // DamagePackets MUST define a DamageType, but defining DamageAmount and KnockbackVector are optional (will default to 1 and Vector2.zero, respectively)
-    public void TakeDamage(DamagePacket damage)
+    public virtual void TakeDamage(DamagePacket damage)
     {
         //If this DamageReciever isn't resistant to the type of damage it's taking, subtract the damage from health.
         if(!ResistCollisionDamage && damage.Type == DamageType.COLLISION || !ResistProjectileDamage && damage.Type == DamageType.PROJECTILE)
@@ -37,7 +39,7 @@ public class DamageReceiver : MonoBehaviour
             _health -= damage.DamageAmount;
             if(damage.DamageAmount > 0)
             {
-                OnTakeDamage?.Invoke(this);
+                OnTakeDamage?.Invoke(damage);
             }
         }
 
@@ -61,11 +63,14 @@ public class DamageReceiver : MonoBehaviour
 
     protected virtual void Death()
     {
-        ResistCollisionDamage = true;
-        ResistProjectileDamage = true;
-        _health = -1;
+        if (CanDie)
+        {
+            ResistCollisionDamage = true;
+            ResistProjectileDamage = true;
+            _health = -1;
 
-        OnDeath?.Invoke(this);
+            OnDeath?.Invoke(this);
+        }
     }
 
     public SpriteRenderer UnitSpriteRenderer;

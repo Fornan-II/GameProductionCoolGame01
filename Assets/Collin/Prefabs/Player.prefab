@@ -227,8 +227,7 @@ MonoBehaviour:
   torqueMultiplier: 1
   background: {fileID: 0}
   shakeAmount: 1
-  bulletText: {fileID: 0}
-  startingBulletAmount: 25
+  maxHealth: 25
   playerUI: {fileID: 0}
   timerText: {fileID: 0}
   gameOverText: {fileID: 0}
@@ -247,8 +246,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 999
-  ResistProjectileDamage: 1
-  ResistCollisionDamage: 1
+  CanDie: 0
+  ResistProjectileDamage: 0
+  ResistCollisionDamage: 0
   ResistKnockback: 0
   UnitSpriteRenderer: {fileID: 4244930096222552546}
 --- !u!114 &2662463948173885054
