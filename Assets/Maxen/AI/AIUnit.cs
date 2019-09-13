@@ -80,7 +80,7 @@ public class AIUnit : MonoBehaviour
             rb.gravityScale = 1.0f;
         }
 
-        PlayerScript.Instance?.AddAmmo(DeathAmmoReward);
+        PlayerScript.Instance?.AddHealth(DeathAmmoReward);
 
         Destroy(gameObject, 3.0f);
     }

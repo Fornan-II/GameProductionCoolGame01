@@ -31,9 +31,8 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private float shakeAmount = 1;
 
-    [SerializeField] private TextMeshProUGUI bulletText;
-    [SerializeField] private int startingBulletAmount = 25;
-    private int currentBulletAmount;
+    [SerializeField] private int maxHealth = 25;
+    private int currentHealth;
 
 
     [SerializeField]
@@ -55,8 +54,8 @@ public class PlayerScript : MonoBehaviour
             Destroy(gameObject);
         }
         playerRig = GetComponent<Rigidbody2D>();
-        currentBulletAmount = startingBulletAmount;
-        bulletText.text = currentBulletAmount.ToString();
+        currentHealth = maxHealth;
+
 
         CountDownToStart(timeTilStart);
 
@@ -73,11 +72,10 @@ public class PlayerScript : MonoBehaviour
         {
             yield return null;
             playerRig.angularVelocity = Mathf.Clamp(playerRig.angularVelocity, 200, Mathf.Infinity);
-           
+
             if (Input.GetButtonDown("Fire1"))
             {
-                if (currentBulletAmount > 0)
-                    Shoot();
+                Shoot();
             }
         }
         Die();
@@ -102,7 +100,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (hit.transform.tag == "Floor" && alive)
         {
-            dying = false;          
+            dying = false;
         }
     }
     private void BackgroundScroll()
@@ -121,8 +119,6 @@ public class PlayerScript : MonoBehaviour
     //Shoots the projectile and adds the force/torque to the player
     private void Shoot()
     {
-        currentBulletAmount--;
-        bulletText.text = currentBulletAmount.ToString();
 
         bulletFlash.Play();
 
@@ -136,7 +132,7 @@ public class PlayerScript : MonoBehaviour
             playerRig.AddTorque(torqueMultiplier, ForceMode2D.Impulse);
         else
             playerRig.AddTorque(-torqueMultiplier, ForceMode2D.Impulse);
-        
+
         if (bulletPrefab && bulletSpawnPosition)
             Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
         else
@@ -149,10 +145,10 @@ public class PlayerScript : MonoBehaviour
         playerUI.transform.position = transform.position;
     }
 
-    public void AddAmmo(int aAmount)
+    public void AddHealth(int aAmount)
     {
-        currentBulletAmount += aAmount;
-        bulletText.text = currentBulletAmount.ToString();
+        currentHealth += aAmount;
+       
     }
 
     public void Stall()

@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class AmmoPackScript : MonoBehaviour
+public class HealthPackScript : MonoBehaviour
 {
-    [SerializeField] private int minAmmo = 0;
-    [SerializeField] private int maxAmmo = 0;
+    [SerializeField] private int minHealth = 0;
+    [SerializeField] private int maxHealth = 0;
 
-    private int ammoToAdd = 0;
+    private int healthToAdd = 0;
 
    [SerializeField] private TextMeshProUGUI bulletText;
 
     private void Start()
     {
-        ammoToAdd = Random.Range(minAmmo, maxAmmo);
-        bulletText.text = ammoToAdd.ToString();
+        healthToAdd = Random.Range(minHealth, maxHealth);
+        bulletText.text = healthToAdd.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D hit)
     {
         if (hit.tag.Contains("Player"))
         {
-            PlayerScript.Instance.AddAmmo(ammoToAdd);
+            PlayerScript.Instance.AddHealth(healthToAdd);
             Destroy(gameObject);
         }
     }
