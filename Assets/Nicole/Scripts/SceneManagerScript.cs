@@ -11,6 +11,8 @@ public class SceneManagerScript : MonoBehaviour
     {
         HeightUpdate();
         
+        //Ideas: Set all of the random object items to inactive and then when this spawns have it get a list of all those objects and set them to active after the wall moves
+        // Wait a second, can't find objects if they are under a parent. Maybe have a coroutine that will loda the objects after a second
     }
 
     // Update is called once per frame
