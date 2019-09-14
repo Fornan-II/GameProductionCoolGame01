@@ -51,6 +51,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject rightWall;
     [SerializeField] private GameObject floor;
 
+    public GameObject restartManager;
+
     private void Start()
     {
         if (Instance == null)
@@ -237,6 +239,7 @@ public class PlayerScript : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.red;
         gameOverText.gameObject.transform.localScale = Vector3.one * 2;
         iTween.ScaleTo(gameOverText.gameObject, iTween.Hash("scale", Vector3.one, "time", 2, "easetype", iTween.EaseType.easeOutElastic));
+        restartManager.SetActive(true);
     }
 
     private void TakeDamage(DamagePacket damage)
