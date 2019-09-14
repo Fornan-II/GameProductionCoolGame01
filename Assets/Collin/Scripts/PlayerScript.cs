@@ -31,9 +31,8 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private float shakeAmount = 1;
 
-    [SerializeField] private TextMeshProUGUI bulletText;
-    [SerializeField] private int startingBulletAmount = 25;
-    private int currentBulletAmount;
+    [SerializeField] private int maxHealth = 25;
+    private int currentHealth;
 
 
     [SerializeField]
@@ -43,6 +42,10 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private int timeTilDeath = 5;
     [SerializeField] private int timeTilDeathBuffer = 10;
+
+    [SerializeField] private GameObject leftWall;
+    [SerializeField] private GameObject rightWall;
+    [SerializeField] private GameObject floor;
 
     private void Start()
     {
@@ -55,8 +58,8 @@ public class PlayerScript : MonoBehaviour
             Destroy(gameObject);
         }
         playerRig = GetComponent<Rigidbody2D>();
-        currentBulletAmount = startingBulletAmount;
-        bulletText.text = currentBulletAmount.ToString();
+        currentHealth = maxHealth;
+
 
         CountDownToStart(timeTilStart);
 
@@ -73,11 +76,10 @@ public class PlayerScript : MonoBehaviour
         {
             yield return null;
             playerRig.angularVelocity = Mathf.Clamp(playerRig.angularVelocity, 200, Mathf.Infinity);
-           
+
             if (Input.GetButtonDown("Fire1"))
             {
-                if (currentBulletAmount > 0)
-                    Shoot();
+                Shoot();
             }
         }
         Die();
@@ -87,6 +89,7 @@ public class PlayerScript : MonoBehaviour
     {
         CameraMovement();
         BackgroundScroll();
+        ClampTransform();
     }
 
     private void OnCollisionEnter2D(Collision2D hit)
@@ -102,7 +105,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (hit.transform.tag == "Floor" && alive)
         {
-            dying = false;          
+            dying = false;
         }
     }
     private void BackgroundScroll()
@@ -121,8 +124,6 @@ public class PlayerScript : MonoBehaviour
     //Shoots the projectile and adds the force/torque to the player
     private void Shoot()
     {
-        currentBulletAmount--;
-        bulletText.text = currentBulletAmount.ToString();
 
         bulletFlash.Play();
 
@@ -136,7 +137,7 @@ public class PlayerScript : MonoBehaviour
             playerRig.AddTorque(torqueMultiplier, ForceMode2D.Impulse);
         else
             playerRig.AddTorque(-torqueMultiplier, ForceMode2D.Impulse);
-        
+
         if (bulletPrefab && bulletSpawnPosition)
             Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
         else
@@ -148,11 +149,26 @@ public class PlayerScript : MonoBehaviour
         Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z);
         playerUI.transform.position = transform.position;
     }
-
-    public void AddAmmo(int aAmount)
+    //Clamps the players transform to the area and rotation of what we want
+    private void ClampTransform()
     {
-        currentBulletAmount += aAmount;
-        bulletText.text = currentBulletAmount.ToString();
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.z));
+        if(leftWall && rightWall && floor)
+        {
+            transform.position = new Vector3(
+          Mathf.Clamp(transform.position.x, leftWall.transform.position.x, rightWall.transform.position.x),
+          Mathf.Clamp(transform.position.y, floor.transform.position.y, Mathf.Infinity), 0);
+        }
+        else
+        {
+            Debug.LogError("Please assign the walls and the floor.");
+        }
+      
+    }
+    public void AddHealth(int aAmount)
+    {
+        currentHealth += aAmount;
+       
     }
 
     public void Stall()
