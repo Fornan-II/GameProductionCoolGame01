@@ -23,6 +23,9 @@ public class SceneManagerScript : MonoBehaviour
 
     public void HeightUpdate()
     {
-        level.transform.position = new Vector3(level.transform.position.x, level.transform.position.y + (TriggerHeight.position.y +15), level.transform.position.z); //On start, shift all objects in the stage upwards so they don't spawn over the last stage
+        if (TriggerHeight)
+        {
+            level.transform.position = new Vector3(level.transform.position.x, level.transform.position.y + (TriggerHeight.position.y + 15), level.transform.position.z); //On start, shift all objects in the stage upwards so they don't spawn over the last stage
+        }
     }
 }

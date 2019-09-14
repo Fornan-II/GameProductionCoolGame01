@@ -6,7 +6,7 @@ public class LevelGeneratingScript : MonoBehaviour
 {
     public GameObject triangleObject;
 
-    public GameObject enemyObject;
+    public PrefabPool enemyObjects;
 
     public GameObject ammoObject;
 
@@ -36,7 +36,8 @@ public class LevelGeneratingScript : MonoBehaviour
         }
         else if (randNum == 2)
         {
-            newOb = enemyObject;
+            //SHOULD BE USING CURRENT SCORE
+            newOb = enemyObjects.GetRandomItem(PlayerScript.Instance.transform.position.y);
             //Instantiate(enemyObject, transform.position, transform.rotation);
         }
         else if (randNum == 3)
@@ -62,7 +63,8 @@ public class LevelGeneratingScript : MonoBehaviour
         }
         else if (randNum == 2)
         {
-            newOb = enemyObject;
+            //SHOULD BE USING CURRENT SCORE
+            newOb = enemyObjects.GetRandomItem(PlayerScript.Instance.transform.position.y);
             //Instantiate(enemyObject, transform.position, transform.rotation);
         }
         else if (randNum == 3)
@@ -71,8 +73,8 @@ public class LevelGeneratingScript : MonoBehaviour
             //Instantiate(ammoObject, transform.position, transform.rotation);
         }
 
-        Instantiate(newOb, transform.position, transform.rotation);
+        GameObject createdObject = Instantiate(newOb, transform.position, transform.rotation);
 
-        newOb.transform.parent = gameObject.transform;
+        createdObject.transform.parent = gameObject.transform;
     }
 }
