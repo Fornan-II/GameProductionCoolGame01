@@ -43,6 +43,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private int timeTilDeath = 5;
     [SerializeField] private int timeTilDeathBuffer = 10;
 
+    [SerializeField] private GameObject leftWall;
+    [SerializeField] private GameObject rightWall;
+    [SerializeField] private GameObject floor;
+
     private void Start()
     {
         if (Instance == null)
@@ -85,6 +89,7 @@ public class PlayerScript : MonoBehaviour
     {
         CameraMovement();
         BackgroundScroll();
+        ClampTransform();
     }
 
     private void OnCollisionEnter2D(Collision2D hit)
@@ -144,7 +149,22 @@ public class PlayerScript : MonoBehaviour
         Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z);
         playerUI.transform.position = transform.position;
     }
-
+    //Clamps the players transform to the area and rotation of what we want
+    private void ClampTransform()
+    {
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.z));
+        if(leftWall && rightWall && floor)
+        {
+            transform.position = new Vector3(
+          Mathf.Clamp(transform.position.x, leftWall.transform.position.x, rightWall.transform.position.x),
+          Mathf.Clamp(transform.position.y, floor.transform.position.y, Mathf.Infinity), 0);
+        }
+        else
+        {
+            Debug.LogError("Please assign the walls and the floor.");
+        }
+      
+    }
     public void AddHealth(int aAmount)
     {
         currentHealth += aAmount;
