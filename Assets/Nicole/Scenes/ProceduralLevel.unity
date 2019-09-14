@@ -151,8 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &23641993
@@ -200,8 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &58222327
@@ -249,8 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &72781704
@@ -342,8 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &174392990
@@ -496,8 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &269795275
@@ -545,8 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &317856419
@@ -594,8 +588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &473335743
@@ -643,8 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &568400752
@@ -692,8 +684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &626696539
@@ -741,8 +732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &642687057
@@ -790,8 +780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &722074678
@@ -839,8 +828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &767726860
@@ -888,8 +876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &795506175
@@ -937,8 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &896021581
@@ -986,8 +972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &899955351
@@ -1035,8 +1020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1059513596
@@ -1084,8 +1068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1114659660
@@ -1133,8 +1116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1267195755
@@ -1300,8 +1282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1402005955
@@ -1349,8 +1330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1418058301
@@ -1398,8 +1378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1456612802
@@ -1447,8 +1426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1537973079
@@ -1496,8 +1474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1585927765
@@ -1545,8 +1522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1592008002
@@ -1729,8 +1705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1744730384
@@ -1778,8 +1753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1766480133
@@ -1841,8 +1815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!1 &1984148249
@@ -1876,8 +1849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleObject: {fileID: 5248965087458618620, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
-  enemyObject: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
-    type: 3}
+  enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
     type: 3}
 --- !u!4 &1984148251

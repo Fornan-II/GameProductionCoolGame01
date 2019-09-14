@@ -52,11 +52,13 @@ public class AIUnit : MonoBehaviour
             if (sqrDistanceToPlayer > StopProcessUnitSquareDistance)
             {
                 _isProcessing = false;
+                movement.DisableMovement();
             }
         }
         else if(sqrDistanceToPlayer < StartProcessUnitSquareDistance)
         {
             _isProcessing = true;
+            movement.EnableMovement();
         }
     }
 
@@ -77,6 +79,7 @@ public class AIUnit : MonoBehaviour
         {
             rb.gravityScale = 1.0f;
         }
+        rb.freezeRotation = false;
 
         PlayerScript.Instance?.AddHealth(DeathAmmoReward);
 

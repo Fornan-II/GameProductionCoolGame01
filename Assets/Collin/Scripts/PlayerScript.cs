@@ -32,7 +32,11 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float shakeAmount = 1;
 
     [SerializeField] private int maxHealth = 25;
-    private int currentHealth;
+    public int currentHealth
+    {
+        get;
+        private set;
+    }
 
 
     [SerializeField]
@@ -63,7 +67,12 @@ public class PlayerScript : MonoBehaviour
 
         CountDownToStart(timeTilStart);
 
-
+        //Get the DamageReceiver and hook it's OnTakeDamageEvent to this script so that enemies can hurt the player's health
+        DamageReceiver playerDamageReceiver = GetComponent<DamageReceiver>();
+        if (playerDamageReceiver)
+        {
+            playerDamageReceiver.OnTakeDamage += TakeDamage;
+        }
     }
 
     private IEnumerator PlayerInput()
@@ -167,8 +176,8 @@ public class PlayerScript : MonoBehaviour
     }
     public void AddHealth(int aAmount)
     {
-        currentHealth += aAmount;
-       
+        //Health can not exceed maxHealth
+        currentHealth = Mathf.Min(maxHealth, currentHealth + aAmount);
     }
 
     public void Stall()
@@ -228,5 +237,11 @@ public class PlayerScript : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.red;
         gameOverText.gameObject.transform.localScale = Vector3.one * 2;
         iTween.ScaleTo(gameOverText.gameObject, iTween.Hash("scale", Vector3.one, "time", 2, "easetype", iTween.EaseType.easeOutElastic));
+    }
+
+    private void TakeDamage(DamagePacket damage)
+    {
+        currentHealth -= damage.DamageAmount;
+        //Check for if less than 0 and die
     }
 }
