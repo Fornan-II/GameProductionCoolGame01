@@ -9,27 +9,18 @@ public class HorizontalMover : AIMoveScript
     public float lerpRate = 0.7f;
 
     protected float preferredYLevel;
-    protected Collider2D _col;
 
     public LayerMask movementReversingLayers;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        _col = GetComponent<Collider2D>();
-    }
-
+    
     protected virtual void Start()
     {
         preferredYLevel = transform.localPosition.y;
     }
-
-    public Vector2 velocityMirror;
+    
     public override void ProcessMovement(float deltaTime)
     {
         base.ProcessMovement(deltaTime);
-
-        velocityMirror = _rb.velocity;
+        
         if(Mathf.Abs(_rb.velocity.sqrMagnitude) < 0.01)
         {
             movingRight = !movingRight;
