@@ -25,32 +25,6 @@ public class LevelGeneratingScript : MonoBehaviour
         
     }
 
-    public void spawnObjects()
-    {
-        randNum = Random.Range(1, 5); //Get a random number and spawn a different object depending on that number
-
-        if (randNum == 1 || randNum == 4)
-        {
-            newOb = triangleObject;
-            //Instantiate(triangleObject, transform.position, transform.rotation);
-        }
-        else if (randNum == 2)
-        {
-            //SHOULD BE USING CURRENT SCORE
-            newOb = enemyObjects.GetRandomItem(PlayerScript.Instance.transform.position.y);
-            //Instantiate(enemyObject, transform.position, transform.rotation);
-        }
-        else if (randNum == 3)
-        {
-            newOb = ammoObject;
-            //Instantiate(ammoObject, transform.position, transform.rotation);
-        }
-
-        Instantiate(newOb, transform.position, transform.rotation);
-
-        newOb.transform.parent = gameObject.transform;
-    }
-
     IEnumerator LoadBlocks()
     {
         yield return new WaitForSeconds(.5f);
@@ -59,18 +33,15 @@ public class LevelGeneratingScript : MonoBehaviour
         if (randNum == 1 || randNum == 4)
         {
             newOb = triangleObject;
-            //Instantiate(triangleObject, transform.position, transform.rotation);
         }
         else if (randNum == 2)
         {
             //SHOULD BE USING CURRENT SCORE
             newOb = enemyObjects.GetRandomItem(PlayerScript.Instance.transform.position.y);
-            //Instantiate(enemyObject, transform.position, transform.rotation);
         }
         else if (randNum == 3)
         {
             newOb = ammoObject;
-            //Instantiate(ammoObject, transform.position, transform.rotation);
         }
 
         GameObject createdObject = Instantiate(newOb, transform.position, transform.rotation);
