@@ -6,21 +6,23 @@ using UnityEngine.UI;
 
 public class RestartScript : MonoBehaviour
 {
-    public Text countdownText;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("LevelReset"); //Should be called when the player dies
+        //StartCoroutine("LevelReset"); //Should be called when the player dies
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.anyKeyDown) //If any button is pressed, restart
+        {
+            SceneManager.LoadSceneAsync("Master Game Scene");
+        }
     }
 
-    public IEnumerator LevelReset() //When envoked, wait a few seconds before resetting
+    /*public IEnumerator LevelReset() //When envoked, wait a few seconds before resetting
     {
         countdownText.text = "Restarting in 5 seconds.";
         yield return new WaitForSeconds(1f);
@@ -33,5 +35,5 @@ public class RestartScript : MonoBehaviour
         countdownText.text = "Restarting in 1 second.";
         yield return new WaitForSeconds(1f);
         SceneManager.LoadSceneAsync("Master Game Scene");
-    }
+    } */
 }
