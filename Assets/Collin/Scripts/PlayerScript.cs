@@ -32,7 +32,11 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float shakeAmount = 1;
 
     [SerializeField] private int maxHealth = 25;
-    private int currentHealth;
+    public int currentHealth
+    {
+        get;
+        private set;
+    }
 
 
     [SerializeField]

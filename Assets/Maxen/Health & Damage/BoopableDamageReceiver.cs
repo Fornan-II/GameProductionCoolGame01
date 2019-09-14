@@ -9,6 +9,7 @@ public class BoopableDamageReceiver : DamageReceiver
 
     public float knockbackStrength = 3.0f;
     public float boopBoost = 13.0f;
+    public int damageAmount = 1;
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
@@ -36,7 +37,7 @@ public class BoopableDamageReceiver : DamageReceiver
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb?.AddForce(knockbackVector, ForceMode2D.Impulse);
             DamageReceiver otherDR = collision.transform.GetComponent<DamageReceiver>();
-            otherDR?.TakeDamage(new DamagePacket(DamageType.COLLISION, -knockbackVector));
+            otherDR?.TakeDamage(new DamagePacket(DamageType.COLLISION, damageAmount, -knockbackVector));
         }
     }
 

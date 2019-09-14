@@ -351,8 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ccf41568cedec4aa25c12e728ff186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAmmo: 1
-  maxAmmo: 5
+  minHealth: 1
+  maxHealth: 3
   bulletText: {fileID: 316068250298158499}
 --- !u!61 &316068250589056640
 BoxCollider2D:
