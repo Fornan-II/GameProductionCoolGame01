@@ -163,7 +163,7 @@ public class PlayerScript : MonoBehaviour
     //Clamps the players transform to the area and rotation of what we want
     private void ClampTransform()
     {
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.z));
+        //transform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.z));
         if(leftWall && rightWall && floor)
         {
             transform.position = new Vector3(
@@ -245,6 +245,10 @@ public class PlayerScript : MonoBehaviour
     private void TakeDamage(DamagePacket damage)
     {
         currentHealth -= damage.DamageAmount;
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
         //Check for if less than 0 and die
     }
 }
