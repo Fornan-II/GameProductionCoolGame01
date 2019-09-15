@@ -299,18 +299,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &338700933 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3757107825463606213, guid: 44f808b847d19514baeb47bea8614362,
-    type: 3}
-  m_PrefabInstance: {fileID: 3757107825665970496}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &351740115
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,15 +437,17 @@ MonoBehaviour:
   knockbackMultiplier: 1500
   torqueMultiplier: 3.65
   background: {fileID: 2039676346}
-  ground: {fileID: 656837627}
   shakeAmount: 1
-  bulletText: {fileID: 338700933}
-  startingBulletAmount: 25
+  maxHealth: 25
   playerUI: {fileID: 1945015432}
   timerText: {fileID: 886021939}
   gameOverText: {fileID: 1736048756}
   timeTilDeath: 5
   timeTilDeathBuffer: 10
+  leftWall: {fileID: 1385172278}
+  rightWall: {fileID: 1567883055}
+  floor: {fileID: 656837627}
+  restartManager: {fileID: 0}
 --- !u!58 &918166104
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6023,11 +6013,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
-        type: 3}
-      propertyPath: m_Name
-      value: Ammo Pack
-      objectReference: {fileID: 0}
     - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6082,6 +6067,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
+        type: 3}
+      propertyPath: m_Name
+      value: Ammo Pack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94619834531d91345a3a77498543947c, type: 3}
