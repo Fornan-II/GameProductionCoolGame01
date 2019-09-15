@@ -20,7 +20,7 @@ public class TEMP_Health_UI : MonoBehaviour
         {
             if(PlayerScript.Instance.currentHealth <= 0)
             {
-                healthText.text = "YOU ARE DEAD IF YOU COULD KINDLY STOP PLAYING";
+                healthText.text = "0";
             }
             else
             {

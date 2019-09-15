@@ -21,9 +21,13 @@ public class HorizontalMover : AIMoveScript
     {
         base.ProcessMovement(deltaTime);
         
-        if(Mathf.Abs(_rb.velocity.sqrMagnitude) < 0.01)
+        if(movingRight && _rb.velocity.x < 0.01f)
         {
-            movingRight = !movingRight;
+            movingRight = false;
+        }
+        else if(!movingRight && _rb.velocity.x > -0.01f)
+        {
+            movingRight = true;
         }
 
         //Calculate moveVelocity
