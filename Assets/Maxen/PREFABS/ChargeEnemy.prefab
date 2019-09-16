@@ -443,7 +443,7 @@ MonoBehaviour:
   movement: {fileID: 1994584632874644921}
   LetProcessAI: 1
   _isProcessing: 0
-  DeathAmmoReward: 3
+  DeathHealthReward: 2
 --- !u!114 &1994584632874644921
 MonoBehaviour:
   m_ObjectHideFlags: 0

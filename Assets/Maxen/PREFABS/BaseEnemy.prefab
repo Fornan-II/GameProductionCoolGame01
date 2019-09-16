@@ -188,7 +188,7 @@ MonoBehaviour:
   movement: {fileID: 6876616101651125820}
   LetProcessAI: 1
   _isProcessing: 0
-  DeathAmmoReward: 3
+  DeathHealthReward: 1
 --- !u!1 &6876616101690867726
 GameObject:
   m_ObjectHideFlags: 0
