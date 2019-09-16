@@ -107,7 +107,7 @@ MonoBehaviour:
   DamageRecievingAngle: 140
   knockbackStrength: 13
   boopBoost: 13
-  damageAmount: 3
+  damageAmount: 1
 --- !u!61 &6876616101651125815
 BoxCollider2D:
   m_ObjectHideFlags: 0

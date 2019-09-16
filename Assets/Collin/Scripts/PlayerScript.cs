@@ -43,6 +43,10 @@ public class PlayerScript : MonoBehaviour
     private GameObject playerUI;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
+
+    private float score;
 
     [SerializeField] private int timeTilDeath = 5;
     [SerializeField] private int timeTilDeathBuffer = 10;
@@ -68,6 +72,7 @@ public class PlayerScript : MonoBehaviour
 
 
         CountDownToStart(timeTilStart);
+        StartCoroutine(GroundCheck());
 
         //Get the DamageReceiver and hook it's OnTakeDamageEvent to this script so that enemies can hurt the player's health
         DamageReceiver playerDamageReceiver = GetComponent<DamageReceiver>();
@@ -101,14 +106,14 @@ public class PlayerScript : MonoBehaviour
         CameraMovement();
         BackgroundScroll();
         ClampTransform();
+        Score();
     }
 
     private void OnCollisionEnter2D(Collision2D hit)
     {
-        if (hit.transform.tag == "Floor" && alive)
+        if (hit.transform.tag == "Floor" && alive && !dying)
         {
             dying = true;
-            StartCoroutine(Grounded());
         }
     }
 
@@ -119,6 +124,16 @@ public class PlayerScript : MonoBehaviour
             dying = false;
         }
     }
+
+    private void Score()
+    {
+        if (alive && transform.position.y > 0)
+        {
+            score = transform.position.y;
+            scoreText.text = "Score: " + (int)score;
+        }
+    }
+
     private void BackgroundScroll()
     {
         background.transform.position = new Vector3(transform.position.x, transform.position.y, background.transform.position.z);
@@ -165,7 +180,7 @@ public class PlayerScript : MonoBehaviour
     {
 
         //transform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.z));
-        if(leftWall && rightWall && floor)
+        if (leftWall && rightWall && floor)
         {
             transform.position = new Vector3(
           Mathf.Clamp(transform.position.x, leftWall.transform.position.x, rightWall.transform.position.x),
@@ -175,7 +190,7 @@ public class PlayerScript : MonoBehaviour
         {
             Debug.LogError("Please assign the walls and the floor.");
         }
-      
+
     }
     public void AddHealth(int aAmount)
     {
@@ -226,13 +241,26 @@ public class PlayerScript : MonoBehaviour
             "oncompletetarget", gameObject));
     }
 
-    private IEnumerator Grounded()
+    private IEnumerator GroundCheck()
     {
-        yield return new WaitForSeconds(timeTilDeathBuffer);
-        if (dying)
+        while (true)
         {
-            CountDownToDeath(timeTilDeath);
+            yield return new WaitUntil(() => dying);
+            int timer = timeTilDeathBuffer;
+            while (timer > 0)
+            {
+                yield return new WaitForSeconds(1);
+                timer--;
+                if (!dying)
+                    break;
+            }
+            if (dying)
+            {
+                CountDownToDeath(timeTilDeath);
+            }
+            yield return new WaitUntil(() => !dying);
         }
+
     }
 
     private void Die()
@@ -240,15 +268,16 @@ public class PlayerScript : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.red;
         gameOverText.gameObject.transform.localScale = Vector3.one * 2;
         iTween.ScaleTo(gameOverText.gameObject, iTween.Hash("scale", Vector3.one, "time", 2, "easetype", iTween.EaseType.easeOutElastic));
+        finalScoreText.text = string.Format("Your Final Score Is: {0}", (int)score);
         restartManager.SetActive(true);
     }
 
     private void TakeDamage(DamagePacket damage)
     {
         currentHealth -= damage.DamageAmount;
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            Die();
+            alive = false;
         }
         //Check for if less than 0 and die
     }
