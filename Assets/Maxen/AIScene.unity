@@ -1100,6 +1100,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2325642570074690764, guid: 864588d8ab471d749822f486acff5925,
+        type: 3}
+      propertyPath: explosionData.BaseDamageAmount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 864588d8ab471d749822f486acff5925, type: 3}
 --- !u!1001 &3065917374345558273
@@ -1186,17 +1191,17 @@ PrefabInstance:
     - target: {fileID: 6876616101651125813, guid: c97cd8d24f69f3e4da757eb7f959ce99,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6876616101651125818, guid: c97cd8d24f69f3e4da757eb7f959ce99,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6876616101651125818, guid: c97cd8d24f69f3e4da757eb7f959ce99,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 6876616101651125818, guid: c97cd8d24f69f3e4da757eb7f959ce99,
         type: 3}

@@ -34,6 +34,6 @@ public class BulletScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D hit)
     {
         DamageReceiver hitDR = hit.GetComponent<DamageReceiver>();
-        hitDR?.TakeDamage(new DamagePacket(DamageType.PROJECTILE, Damage, bulletRig.velocity * KnockbackScalar));
+        hitDR?.TakeDamage(new DamagePacket(DamageType.PROJECTILE, Damage, bulletRig.velocity * KnockbackScalar), hit.ClosestPoint(transform.position));
     }
 }

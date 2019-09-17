@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: aeac13fadb54ae747b66231df240327e, type: 3}
   m_Color: {r: 1, g: 0.666701, b: 0, a: 1}
   m_FlipX: 0
@@ -102,9 +102,10 @@ MonoBehaviour:
   CanDie: 1
   ResistProjectileDamage: 0
   ResistCollisionDamage: 0
+  ResistExplosionDamage: 0
   ResistKnockback: 0
   UnitSpriteRenderer: {fileID: 6876616101651125817}
-  DamageRecievingAngle: 140
+  DamageRecievingAngle: 110
   knockbackStrength: 13
   boopBoost: 13
   damageAmount: 1
@@ -290,7 +291,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 35cef6ac87315d44b9ceca844484f7a1, type: 3}
   m_Color: {r: 0.6776924, g: 0.13501245, b: 0.6981132, a: 1}
   m_FlipX: 0
@@ -370,7 +371,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 35cef6ac87315d44b9ceca844484f7a1, type: 3}
   m_Color: {r: 0.6776924, g: 0.13501245, b: 0.6981132, a: 1}
   m_FlipX: 0
@@ -450,7 +451,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: aeac13fadb54ae747b66231df240327e, type: 3}
   m_Color: {r: 0.6776924, g: 0.13501245, b: 0.6981132, a: 1}
   m_FlipX: 0

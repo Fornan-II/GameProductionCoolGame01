@@ -19,6 +19,7 @@ public class DamageReceiver : MonoBehaviour
     public bool CanDie = true;
     public bool ResistProjectileDamage = false;
     public bool ResistCollisionDamage = false;
+    public bool ResistExplosionDamage = false;
     public bool ResistKnockback = false;
 
     //Event information for when this DamageReciever "dies"
@@ -31,10 +32,16 @@ public class DamageReceiver : MonoBehaviour
     // Takes in parameter damage of type DamagePacket.
     // DamagePackets are 3 parts: DamageType, DamageAmount, and KnockbackVector.
     // DamagePackets MUST define a DamageType, but defining DamageAmount and KnockbackVector are optional (will default to 1 and Vector2.zero, respectively)
-    public virtual void TakeDamage(DamagePacket damage)
+    public virtual void TakeDamage(DamagePacket damage, Vector2? hitPoint = null)
     {
+        //Already dead don't do anything
+        if(_health <= 0)
+        {
+            return;
+        }
+
         //If this DamageReciever isn't resistant to the type of damage it's taking, subtract the damage from health.
-        if(!ResistCollisionDamage && damage.Type == DamageType.COLLISION || !ResistProjectileDamage && damage.Type == DamageType.PROJECTILE)
+        if(!ResistCollisionDamage && damage.Type == DamageType.COLLISION || !ResistProjectileDamage && damage.Type == DamageType.PROJECTILE || !ResistExplosionDamage && damage.Type == DamageType.EXPLOSION)
         {
             _health -= damage.DamageAmount;
             if(damage.DamageAmount > 0)
@@ -52,7 +59,14 @@ public class DamageReceiver : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb && !ResistKnockback)
         {
-            rb.AddForce(damage.KnockbackVector, ForceMode2D.Impulse);
+            if (hitPoint.HasValue)
+            {
+                rb.AddForceAtPosition(damage.KnockbackVector, hitPoint.Value, ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce(damage.KnockbackVector, ForceMode2D.Impulse);
+            }
         }
 
         if (_health <= 0)
@@ -65,8 +79,6 @@ public class DamageReceiver : MonoBehaviour
     {
         if (CanDie)
         {
-            ResistCollisionDamage = true;
-            ResistProjectileDamage = true;
             _health = -1;
 
             OnDeath?.Invoke(this);
