@@ -13,7 +13,6 @@ public class HorizontalCharger : HorizontalMover
         //If player is close to this enemy, charge at them.
         if(Mathf.Abs(PlayerScript.Instance.transform.position.y - transform.position.y) < aggroYDistance)
         {
-            Debug.Log("CHARGE");
             //Set moving direction variable to face the direction the player is in
             movingRight = PlayerScript.Instance.transform.position.x > transform.position.x;
 
@@ -28,7 +27,6 @@ public class HorizontalCharger : HorizontalMover
         }
         else
         {
-            Debug.Log("Normal");
             base.ProcessMovement(deltaTime);
         }
     }

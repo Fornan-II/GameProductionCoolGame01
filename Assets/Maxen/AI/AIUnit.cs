@@ -22,7 +22,7 @@ public class AIUnit : MonoBehaviour
     [SerializeField]
     protected bool _isProcessing = false;
 
-    public int DeathAmmoReward = 3;
+    public int DeathHealthReward = 3;
 
     protected virtual void Start()
     {
@@ -81,7 +81,7 @@ public class AIUnit : MonoBehaviour
         }
         rb.freezeRotation = false;
 
-        PlayerScript.Instance?.AddHealth(DeathAmmoReward);
+        PlayerScript.Instance?.AddHealth(DeathHealthReward);
 
         Destroy(gameObject, 3.0f);
     }

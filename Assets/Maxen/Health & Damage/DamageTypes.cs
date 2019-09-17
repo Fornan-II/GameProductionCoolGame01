@@ -3,7 +3,8 @@
 public enum DamageType
 {
     PROJECTILE,
-    COLLISION
+    COLLISION,
+    EXPLOSION
 }
 
 [System.Serializable]
@@ -39,5 +40,10 @@ public struct DamagePacket
         Type = type;
         DamageAmount = damage;
         KnockbackVector = knockback;
+    }
+
+    public override string ToString()
+    {
+        return Type + " | " + DamageAmount + " | " + KnockbackVector;
     }
 }

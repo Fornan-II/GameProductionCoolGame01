@@ -68,9 +68,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: aeac13fadb54ae747b66231df240327e, type: 3}
-  m_Color: {r: 0.13333331, g: 0.69803923, b: 0.1389595, a: 1}
+  m_Color: {r: 0.10693307, g: 0.8396226, b: 0.19822842, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -148,9 +148,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 35cef6ac87315d44b9ceca844484f7a1, type: 3}
-  m_Color: {r: 0.13333331, g: 0.69803923, b: 0.1389595, a: 1}
+  m_Color: {r: 0.10693307, g: 0.8396226, b: 0.19822842, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -228,9 +228,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 35cef6ac87315d44b9ceca844484f7a1, type: 3}
-  m_Color: {r: 0.13333331, g: 0.69803923, b: 0.1389595, a: 1}
+  m_Color: {r: 0.10693307, g: 0.8396226, b: 0.19822842, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 1994584632874644923}
   - component: {fileID: 1994584632874644912}
   - component: {fileID: 1994584632874644921}
+  - component: {fileID: 2325642570074690764}
   m_Layer: 9
   m_Name: ChargeEnemy
   m_TagString: Untagged
@@ -347,9 +348,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: aeac13fadb54ae747b66231df240327e, type: 3}
-  m_Color: {r: 0.4811321, g: 0.13389997, b: 0.4312972, a: 1}
+  m_Color: {r: 1, g: 0.39872542, b: 0.1462264, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -375,6 +376,7 @@ MonoBehaviour:
   CanDie: 1
   ResistProjectileDamage: 0
   ResistCollisionDamage: 0
+  ResistExplosionDamage: 0
   ResistKnockback: 0
   UnitSpriteRenderer: {fileID: 1994584632874644916}
   DamageRecievingAngle: 63
@@ -443,7 +445,7 @@ MonoBehaviour:
   movement: {fileID: 1994584632874644921}
   LetProcessAI: 1
   _isProcessing: 0
-  DeathAmmoReward: 3
+  DeathHealthReward: 2
 --- !u!114 &1994584632874644921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,3 +467,22 @@ MonoBehaviour:
   aggroYDistance: 3
   chargeSpeed: 13
   chargeLerpRate: 0.07
+--- !u!114 &2325642570074690764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994584632874644920}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060ccebdb732c0d4bb22d210f273768d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionData:
+    BaseDamageAmount: 5
+    EffectiveRadius: 10
+    BaseKnockbackStrength: 10
+  explosionParticles: {fileID: 4625334255841003871, guid: a6da427e5a9991342bfd4c1782af2f94,
+    type: 3}
+  _damageReceiver: {fileID: 1994584632874644917}

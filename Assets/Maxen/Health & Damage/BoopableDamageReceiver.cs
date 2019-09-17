@@ -13,7 +13,7 @@ public class BoopableDamageReceiver : DamageReceiver
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.tag.Contains("CanBoop"))
+        if (!collision.gameObject.tag.Contains("CanBoop") || _health <= 0)
         {
             return;
         }
@@ -27,7 +27,6 @@ public class BoopableDamageReceiver : DamageReceiver
         if (Vector2.Angle(transform.up, vectorToContact) < DamageRecievingAngle * 0.5f)
         {
             //This DR is taking damage
-            //collision.rigidbody?.AddForce(-knockbackVector, ForceMode2D.Impulse);
             collision.rigidbody?.AddForce(Vector2.up * boopBoost, ForceMode2D.Impulse);
             TakeDamage(new DamagePacket(DamageType.COLLISION, knockbackVector));
         }

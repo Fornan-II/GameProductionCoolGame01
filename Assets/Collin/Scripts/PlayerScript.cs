@@ -143,7 +143,7 @@ public class PlayerScript : MonoBehaviour
         background.GetComponent<MeshRenderer>().material.mainTextureOffset = offset;
     }
     //Shakes the screen (camera)
-    private void ScreenShake()
+    public void ScreenShake()
     {
         iTween.ShakePosition(Camera.main.gameObject, iTween.Hash("amount", Vector3.one * shakeAmount, "time", 0.05f));
     }
