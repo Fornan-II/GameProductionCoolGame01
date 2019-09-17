@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7930636823045027652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735567899342089582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a63e384c428fe64ea78b747fa068ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 1
+  CanDie: 1
+  ResistProjectileDamage: 0
+  ResistCollisionDamage: 0
+  ResistExplosionDamage: 0
+  ResistKnockback: 1
+  UnitSpriteRenderer: {fileID: 4769022958936508870}
+  DamageRecievingAngle: 360
+  knockbackStrength: 0
+  boopBoost: 0
+  damageAmount: 0
 --- !u!114 &7943719114342558111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,10 +38,10 @@ MonoBehaviour:
   explosionData:
     BaseDamageAmount: 5
     EffectiveRadius: 10
-    BaseKnockbackStrength: 13
+    BaseKnockbackStrength: 20
   explosionParticles: {fileID: 4625334255841003871, guid: a6da427e5a9991342bfd4c1782af2f94,
     type: 3}
-  _damageReceiver: {fileID: 7960339186989747004}
+  _damageReceiver: {fileID: 7930636823045027652}
 --- !u!1 &7150806885552635508
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,13 +194,19 @@ PrefabInstance:
       propertyPath: _health
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5124341296796609729, guid: 804e8545b8edbb248ad27d75441004d1,
+        type: 3}
+      propertyPath: _trackedDR
+      value: 
+      objectReference: {fileID: 7930636823045027652}
     - target: {fileID: 1360950470090754132, guid: 804e8545b8edbb248ad27d75441004d1,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ea3513bbca1852342a0b432a0ad0b4be,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518560065017055918, guid: 804e8545b8edbb248ad27d75441004d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 804e8545b8edbb248ad27d75441004d1, type: 3}
 --- !u!1 &1735567899342089582 stripped
 GameObject:
@@ -191,15 +220,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5822565120881901970}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7960339186989747004 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4518560065017055918, guid: 804e8545b8edbb248ad27d75441004d1,
+--- !u!212 &4769022958936508870 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1360950470090754132, guid: 804e8545b8edbb248ad27d75441004d1,
     type: 3}
   m_PrefabInstance: {fileID: 5822565120881901970}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735567899342089582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a4a7c6c05787942a61683c8998a142, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
