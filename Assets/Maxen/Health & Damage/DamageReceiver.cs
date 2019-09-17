@@ -88,6 +88,11 @@ public class DamageReceiver : MonoBehaviour
     public SpriteRenderer UnitSpriteRenderer;
     protected Coroutine DamageFlashCoroutine;
 
+    protected virtual void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
+
     protected virtual IEnumerator DamageFlash()
     {
         if(UnitSpriteRenderer)

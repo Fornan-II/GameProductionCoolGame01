@@ -7,6 +7,7 @@ public class SpriteHealth : MonoBehaviour
     [SerializeField] protected DamageReceiver _trackedDR;
     [SerializeField] protected SpriteRenderer _spriteRenderer;
 
+    public bool DestroyAtZeroHealth = true;
     public Sprite[] spriteIndicators;
 
     protected virtual void Start()
@@ -18,7 +19,14 @@ public class SpriteHealth : MonoBehaviour
     {
         int spriteIndex = Mathf.Clamp(_trackedDR.Health, 0, spriteIndicators.Length - 1);
 
-        _spriteRenderer.sprite = spriteIndicators[spriteIndex];
+        if (DestroyAtZeroHealth && spriteIndex == 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _spriteRenderer.sprite = spriteIndicators[spriteIndex];
+        }
     }
 
 #if UNITY_EDITOR
