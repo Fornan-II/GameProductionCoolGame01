@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionData:
-    BaseDamageAmount: 3
+    BaseDamageAmount: 5
     EffectiveRadius: 10
     BaseKnockbackStrength: 10
   explosionParticles: {fileID: 4625334255841003871, guid: a6da427e5a9991342bfd4c1782af2f94,
