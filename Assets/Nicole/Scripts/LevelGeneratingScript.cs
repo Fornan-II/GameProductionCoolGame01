@@ -8,7 +8,7 @@ public class LevelGeneratingScript : MonoBehaviour
 
     public PrefabPool enemyObjects;
 
-    public GameObject ammoObject;
+    public PrefabPool ammoObject;
 
     private int randNum;
 
@@ -41,11 +41,34 @@ public class LevelGeneratingScript : MonoBehaviour
         }
         else if (randNum == 3)
         {
-            newOb = ammoObject;
+            newOb = ammoObject.GetRandomItem(PlayerScript.Instance.transform.position.y); ;
+        }
+        
+        GameObject createdObject;
+
+        if(newOb.name == "Triangle1")
+        {
+            createdObject = Instantiate(newOb, transform.position, transform.rotation);
+            createdObject.transform.eulerAngles = new Vector3(createdObject.transform.eulerAngles.x, createdObject.transform.eulerAngles.y, createdObject.transform.eulerAngles.z + 180);
+        }
+        else if(newOb.name == "Triangle2")
+        {
+            if(gameObject.transform.position.x > 0)
+            {
+                createdObject = Instantiate(newOb, transform.position, transform.rotation);
+                createdObject.transform.eulerAngles = new Vector3(createdObject.transform.eulerAngles.x, createdObject.transform.eulerAngles.y, createdObject.transform.eulerAngles.z + 90);
+            }
+            else if(gameObject.transform.position.x < 0)
+            {
+                createdObject = Instantiate(newOb, transform.position, transform.rotation);
+                createdObject.transform.eulerAngles = new Vector3(createdObject.transform.eulerAngles.x, createdObject.transform.eulerAngles.y, createdObject.transform.eulerAngles.z - 90);
+            }
+        }
+        else
+        {
+            createdObject = Instantiate(newOb, transform.position, transform.rotation);
         }
 
-        GameObject createdObject = Instantiate(newOb, transform.position, transform.rotation);
-
-        createdObject.transform.parent = gameObject.transform;
+        //createdObject.transform.parent = gameObject.transform;
     }
 }
