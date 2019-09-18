@@ -46,22 +46,25 @@ public class LevelGeneratingScript : MonoBehaviour
         
         GameObject createdObject;
 
-        if(newOb.name == "Triangle2")
+        if (newOb)
         {
-            if(gameObject.transform.position.x > 0)
+            if (newOb.name == "Triangle2")
+            {
+                if (gameObject.transform.position.x > 0)
+                {
+                    createdObject = Instantiate(newOb, transform.position, transform.rotation);
+                    createdObject.transform.eulerAngles = new Vector3(createdObject.transform.eulerAngles.x, createdObject.transform.eulerAngles.y, createdObject.transform.eulerAngles.z + 90);
+                }
+                else if (gameObject.transform.position.x < 0)
+                {
+                    createdObject = Instantiate(newOb, transform.position, transform.rotation);
+                    createdObject.transform.eulerAngles = new Vector3(createdObject.transform.eulerAngles.x, createdObject.transform.eulerAngles.y, createdObject.transform.eulerAngles.z - 90);
+                }
+            }
+            else
             {
                 createdObject = Instantiate(newOb, transform.position, transform.rotation);
-                createdObject.transform.eulerAngles = new Vector3(createdObject.transform.eulerAngles.x, createdObject.transform.eulerAngles.y, createdObject.transform.eulerAngles.z + 90);
             }
-            else if(gameObject.transform.position.x < 0)
-            {
-                createdObject = Instantiate(newOb, transform.position, transform.rotation);
-                createdObject.transform.eulerAngles = new Vector3(createdObject.transform.eulerAngles.x, createdObject.transform.eulerAngles.y, createdObject.transform.eulerAngles.z - 90);
-            }
-        }
-        else
-        {
-            createdObject = Instantiate(newOb, transform.position, transform.rotation);
         }
 
         //createdObject.transform.parent = gameObject.transform;
