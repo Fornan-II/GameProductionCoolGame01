@@ -442,6 +442,8 @@ MonoBehaviour:
   playerUI: {fileID: 1945015432}
   timerText: {fileID: 886021939}
   gameOverText: {fileID: 1736048756}
+  scoreText: {fileID: 0}
+  finalScoreText: {fileID: 0}
   timeTilDeath: 5
   timeTilDeathBuffer: 10
   leftWall: {fileID: 1385172278}
@@ -6013,15 +6015,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
+        type: 3}
+      propertyPath: m_Name
+      value: Ammo Pack
+      objectReference: {fileID: 0}
     - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.728
+      value: 6.2
       objectReference: {fileID: 0}
     - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.829
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
         type: 3}
@@ -6068,10 +6075,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
+    - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
         type: 3}
-      propertyPath: m_Name
-      value: Ammo Pack
+      propertyPath: m_LocalScale.x
+      value: 2.0111
+      objectReference: {fileID: 0}
+    - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.0111
+      objectReference: {fileID: 0}
+    - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.0111
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94619834531d91345a3a77498543947c, type: 3}

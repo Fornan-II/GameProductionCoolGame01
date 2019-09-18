@@ -22,6 +22,7 @@ public class Explosion
         packet.DamageAmount = Mathf.RoundToInt(pointMagnitude * BaseDamageAmount);
         packet.KnockbackVector = vecToHitPoint.normalized * pointMagnitude * BaseKnockbackStrength;
 
+        Debug.Log(packet);
         return packet;
     }
 

@@ -11,8 +11,6 @@ public class BoopableDamageReceiver : DamageReceiver
     public float boopBoost = 13.0f;
     public int damageAmount = 1;
 
-    public event DamageReceiverEvent OnDealDamage;
-
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.tag.Contains("CanBoop") || _health <= 0)
@@ -39,10 +37,6 @@ public class BoopableDamageReceiver : DamageReceiver
             rb?.AddForce(knockbackVector, ForceMode2D.Impulse);
             DamageReceiver otherDR = collision.transform.GetComponent<DamageReceiver>();
             otherDR?.TakeDamage(new DamagePacket(DamageType.COLLISION, damageAmount, -knockbackVector));
-            if(otherDR)
-            {
-                OnDealDamage?.Invoke(otherDR);
-            }
         }
     }
 
