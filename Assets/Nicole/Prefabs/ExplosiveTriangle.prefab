@@ -37,7 +37,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionData:
     BaseDamageAmount: 5
-    EffectiveRadius: 10
+    EffectiveRadius: 15
     BaseKnockbackStrength: 20
   explosionParticles: {fileID: 4625334255841003871, guid: a6da427e5a9991342bfd4c1782af2f94,
     type: 3}
