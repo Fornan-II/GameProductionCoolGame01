@@ -13,6 +13,7 @@ public class SpriteHealth : MonoBehaviour
     protected virtual void Start()
     {
         _trackedDR.OnTakeDamage += OnDRTakeDamage;
+        OnDRTakeDamage(new DamagePacket());
     }
 
     protected virtual void OnDRTakeDamage(DamagePacket damage)
