@@ -31,6 +31,9 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private float shakeAmount = 1;
 
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private ParticleSystem healthParticle;
+    [SerializeField] private ParticleSystem damageParticle;
     [SerializeField] private int maxHealth = 25;
     public int currentHealth
     {
@@ -127,6 +130,14 @@ public class PlayerScript : MonoBehaviour
 
     private void Score()
     {
+        if (playerRig.velocity.y >= 0)
+        {
+            scoreText.color = Color.green;
+        }
+        else
+        {
+            scoreText.color = Color.red;
+        }
         if (alive && transform.position.y > 0)
         {
             score = transform.position.y;
@@ -196,6 +207,7 @@ public class PlayerScript : MonoBehaviour
     {
         //Health can not exceed maxHealth
         currentHealth = Mathf.Min(maxHealth, currentHealth + aAmount);
+        healthParticle.Play();
     }
 
     public void Stall()
@@ -274,7 +286,11 @@ public class PlayerScript : MonoBehaviour
 
     private void TakeDamage(DamagePacket damage)
     {
+        ScreenShake();
         currentHealth -= damage.DamageAmount;
+        healthText.gameObject.transform.localScale = Vector3.one * 3f;
+        iTween.ScaleTo(healthText.gameObject, iTween.Hash("scale", Vector3.one, "time", 1f, "easetype", iTween.EaseType.easeOutElastic));
+        damageParticle.Play();
         if (currentHealth <= 0)
         {
             alive = false;

@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 316068250589056643}
   - component: {fileID: 316068250589056640}
   m_Layer: 0
-  m_Name: Ammo Pack
+  m_Name: Health Pack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

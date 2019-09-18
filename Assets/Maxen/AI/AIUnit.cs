@@ -82,7 +82,7 @@ public class AIUnit : MonoBehaviour
         rb.freezeRotation = false;
 
         PlayerScript.Instance?.AddHealth(DeathHealthReward);
-
+        GetComponentInChildren<ParticleSystem>().Play();
         Destroy(gameObject, 3.0f);
     }
 }
