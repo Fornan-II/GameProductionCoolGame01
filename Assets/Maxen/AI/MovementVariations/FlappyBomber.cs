@@ -25,10 +25,13 @@ public class FlappyBomber : FlappyMovement
     {
         Vector2 vectorToPlayer = PlayerScript.Instance.transform.position - transform.position;
         //Check to see if player is close horizontally and vertically... while also being underneath this enemy
-        if (!_primed && Mathf.Abs(vectorToPlayer.x) < aggroXDistance && Mathf.Abs(vectorToPlayer.y) < aggroYDistance && PlayerScript.Instance.transform.position.y < transform.position.y)
+        if (Mathf.Abs(vectorToPlayer.x) < aggroXDistance && Mathf.Abs(vectorToPlayer.y) < aggroYDistance && PlayerScript.Instance.transform.position.y < transform.position.y)
         {
-            _rb.velocity = new Vector2(_rb.velocity.x, -diveBombForce);
-            _primed = true;
+            if (!_primed)
+            {
+                _rb.velocity = new Vector2(_rb.velocity.x, -diveBombForce);
+                _primed = true;
+            }
         }
         else
         {
