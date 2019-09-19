@@ -22,8 +22,9 @@ public class PlayerScript : MonoBehaviour
     //Particle for when the bullet is fired
     [SerializeField] private ParticleSystem bulletFlash;
 
-    //Multipliers added to the player for movement/rotation
-    [SerializeField] private float knockbackMultiplier = 0;
+    [SerializeField] private GunScript.Gun currentWeapon;
+    [SerializeField] private Transform gunTransform;
+
     [SerializeField] private float torqueMultiplier = 0;
     private bool switchDirection = false;
 
@@ -87,7 +88,7 @@ public class PlayerScript : MonoBehaviour
 
     private IEnumerator PlayerInput()
     {
-        playerRig.AddForce(Vector2.up * knockbackMultiplier);
+        playerRig.AddForce(Vector2.up * currentWeapon.knockback);
         playerRig.AddTorque(torqueMultiplier, ForceMode2D.Impulse);
 
         alive = true;
@@ -130,6 +131,9 @@ public class PlayerScript : MonoBehaviour
 
     private void Score()
     {
+        if (!scoreText)
+            return;
+
         if (playerRig.velocity.y >= 0)
         {
             scoreText.color = Color.green;
@@ -162,12 +166,9 @@ public class PlayerScript : MonoBehaviour
     private void Shoot()
     {
 
-        bulletFlash.Play();
-
-        ScreenShake();
 
         playerRig.velocity = Vector3.zero;
-        playerRig.AddForce(-transform.right * knockbackMultiplier);
+        playerRig.AddForce(-transform.right * currentWeapon.knockback);
 
         switchDirection = !switchDirection;
         if (switchDirection)
@@ -176,7 +177,42 @@ public class PlayerScript : MonoBehaviour
             playerRig.AddTorque(-torqueMultiplier, ForceMode2D.Impulse);
 
         if (bulletPrefab && bulletSpawnPosition)
-            Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
+        {
+            if (currentWeapon.type == GunScript.GunType.Pistol || currentWeapon.type == GunScript.GunType.Sniper)
+            {
+                Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
+                bulletFlash.Play();
+                ScreenShake();
+                playerRig.AddForce(-transform.right * currentWeapon.knockback);
+            }
+            else if (currentWeapon.type == GunScript.GunType.Minigun)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
+                    bulletFlash.Play();
+                    ScreenShake();
+                    playerRig.AddForce(-transform.right * currentWeapon.knockback);
+                    float timer = 0.3f;
+                    while (timer > 0)
+                    {
+                        timer -= Time.deltaTime;
+                    }
+                }
+            }
+            else if (currentWeapon.type == GunScript.GunType.Shotgun)
+            {
+                Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
+                Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation * Quaternion.Euler(0, 0, 15));
+                Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation * Quaternion.Euler(0, 0, -15));
+                bulletFlash.Play();
+                ScreenShake();
+                playerRig.AddForce(-transform.right * currentWeapon.knockback);
+            }
+
+
+        }
+
         else
             Debug.LogError("Please set the bullet spawn position or the bullet prefab");
     }
@@ -297,4 +333,18 @@ public class PlayerScript : MonoBehaviour
         }
         //Check for if less than 0 and die
     }
+
+    public void SetCurrentWeapon(GunScript.Gun aGun)
+    {
+        foreach (Transform g in gunTransform)
+        {
+            Destroy(g.gameObject);
+        }
+        Instantiate(aGun.gunObject, gunTransform.position, gunTransform.rotation, gunTransform);
+        currentWeapon = aGun;
+    }
+
+
+
+
 }

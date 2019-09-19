@@ -3367,11 +3367,6 @@ PrefabInstance:
       objectReference: {fileID: 1251754616}
     - target: {fileID: 4244930096222552559, guid: 3f0efa5f5a600734dbdb929ab0e65732,
         type: 3}
-      propertyPath: healthText
-      value: 
-      objectReference: {fileID: 1377624847}
-    - target: {fileID: 4244930096222552559, guid: 3f0efa5f5a600734dbdb929ab0e65732,
-        type: 3}
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1366396156}
@@ -3415,14 +3410,16 @@ PrefabInstance:
       propertyPath: restartManager
       value: 
       objectReference: {fileID: 1932430240}
-    - target: {fileID: 285918807, guid: 3f0efa5f5a600734dbdb929ab0e65732, type: 3}
-      propertyPath: startPosition
+    - target: {fileID: 4244930096222552559, guid: 3f0efa5f5a600734dbdb929ab0e65732,
+        type: 3}
+      propertyPath: healthText
       value: 
-      objectReference: {fileID: 2063350114}
-    - target: {fileID: 285918807, guid: 3f0efa5f5a600734dbdb929ab0e65732, type: 3}
-      propertyPath: currentScore
-      value: 
-      objectReference: {fileID: 1234786314}
+      objectReference: {fileID: 1377624847}
+    - target: {fileID: 4244930096222552559, guid: 3f0efa5f5a600734dbdb929ab0e65732,
+        type: 3}
+      propertyPath: currentWeapon.knockback
+      value: 900
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f0efa5f5a600734dbdb929ab0e65732, type: 3}
 --- !u!1001 &1708663839

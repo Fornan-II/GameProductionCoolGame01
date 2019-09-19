@@ -1,0 +1,655 @@
+fileFormatVersion: 2
+guid: 018b6869fb62adb459687135ace62288
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8339960002781374049
+    second: Rimfire_A11_spritesheet_0
+  - first:
+      213: -6304774381878983042
+    second: Rimfire_A11_spritesheet_1
+  - first:
+      213: -6842719849374125817
+    second: Rimfire_A11_spritesheet_2
+  - first:
+      213: 894731067857333592
+    second: Rimfire_A11_spritesheet_3
+  - first:
+      213: -6123822738252118129
+    second: Rimfire_A11_spritesheet_4
+  - first:
+      213: -4823152349632885836
+    second: Rimfire_A11_spritesheet_5
+  - first:
+      213: 4004821088665060143
+    second: Rimfire_A11_spritesheet_6
+  - first:
+      213: -421803986133075330
+    second: minigun
+  - first:
+      213: 6718360401561738601
+    second: Rimfire_A11_spritesheet_8
+  - first:
+      213: -4267113778990605721
+    second: Rimfire_A11_spritesheet_9
+  - first:
+      213: -4123226223006208526
+    second: Rimfire_A11_spritesheet_10
+  - first:
+      213: -8155498725539877553
+    second: Rimfire_A11_spritesheet_11
+  - first:
+      213: 3260800401018061086
+    second: pistol
+  - first:
+      213: -6326705051743547729
+    second: sniper
+  - first:
+      213: 3848150736731842544
+    second: Rimfire_A11_spritesheet_14
+  - first:
+      213: 2971377421866804839
+    second: Rimfire_A11_spritesheet_15
+  - first:
+      213: 8733182740150952054
+    second: Rimfire_A11_spritesheet_16
+  - first:
+      213: 2833566068037027598
+    second: shotgun
+  - first:
+      213: -634085875128406425
+    second: Rimfire_A11_spritesheet_18
+  - first:
+      213: -3331961137819603161
+    second: Rimfire_A11_spritesheet_19
+  - first:
+      213: -3629190605098269167
+    second: Rimfire_A11_spritesheet_20
+  - first:
+      213: 6075549359259260795
+    second: Rimfire_A11_spritesheet_21
+  - first:
+      213: -7002748046928424004
+    second: Rimfire_A11_spritesheet_22
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 432
+        width: 50
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b626ecc6b02dfcd4f9cf778900d9d274
+      internalID: 8339960002781374049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 432
+        width: 98
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aae69d3f71089794b813911bdaa1ee14
+      internalID: -6304774381878983042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 437
+        width: 100
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3610956b276ba194188d03ed6ea27a63
+      internalID: -6842719849374125817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 440
+        width: 42
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c2596e539884fc4685c3ea94d536db3
+      internalID: 894731067857333592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 432
+        width: 49
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d27e0433230f9e4cb1a1c925a8dbe85
+      internalID: -6123822738252118129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 338
+        width: 100
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b8a3604e6764b64994cc065f06eec4c
+      internalID: -4823152349632885836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 325
+        width: 84
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84eb9b44a2aff7408be84f4f031649c
+      internalID: 4004821088665060143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minigun
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 342
+        width: 100
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 753253286e6f0234cb5193ae908d7067
+      internalID: -421803986133075330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 338
+        width: 100
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c157550f14d09ee44b542b08efc10327
+      internalID: 6718360401561738601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 336
+        width: 53
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8534e2b24d510a447b50b9fd3f7db9ab
+      internalID: -4267113778990605721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 237
+        width: 100
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44d5e911ae43f3440952824ce0646ebe
+      internalID: -4123226223006208526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 248
+        width: 100
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c18e015c64aebd94aa4d9c8f1dbf57e0
+      internalID: -8155498725539877553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pistol
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 234
+        width: 55
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b0edcc2a361e5245a98120cb11ade7e
+      internalID: 3260800401018061086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sniper
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 248
+        width: 100
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d1dce6db87fef946b02da63ce998dff
+      internalID: -6326705051743547729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 240
+        width: 100
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 922507ece9df2a546bf99aceb656c94e
+      internalID: 3848150736731842544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 134
+        width: 66
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e813205dc127cc4c8467f9bdce67604
+      internalID: 2971377421866804839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 136
+        width: 49
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ce2644f8ebf9414398b25f1e0e67b5c
+      internalID: 8733182740150952054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shotgun
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 138
+        width: 89
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f60d2f8b871e940afb05766566a78a
+      internalID: 2833566068037027598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 136
+        width: 80
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d85ff06ad97a8547b7fce0760ad8e98
+      internalID: -634085875128406425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 134
+        width: 81
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8e1dcd5b135df048a5f945a83677689
+      internalID: -3331961137819603161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 37
+        width: 46
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d978bca3210c9f4f90716787955a136
+      internalID: -3629190605098269167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 40
+        width: 100
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e77250fa8f9c6d04490bfdb7f19d315e
+      internalID: 6075549359259260795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rimfire_A11_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 40
+        width: 96
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccf8a14e3069f704d9e565f5cea29347
+      internalID: -7002748046928424004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
