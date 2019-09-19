@@ -81,7 +81,17 @@ public class AIUnit : MonoBehaviour
         }
         rb.freezeRotation = false;
 
-        PlayerScript.Instance?.AddHealth(DeathHealthReward);
+        //Character has to be on player screen in order to reward the player for killing them.
+        //This is because bullets travel very far and often when shooting downwards, your going to hit *some* previously spawned enemy.
+        Renderer renderer = GetComponent<Renderer>();
+        if (renderer)
+        {
+            if (renderer.isVisible)
+            {
+                PlayerScript.Instance?.AddHealth(DeathHealthReward);
+            }
+        }
+
         GetComponentInChildren<ParticleSystem>().Play();
         Destroy(gameObject, 3.0f);
     }
