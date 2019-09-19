@@ -153,6 +153,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &23641993
 Transform:
   m_ObjectHideFlags: 0
@@ -200,6 +202,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &58222327
 Transform:
   m_ObjectHideFlags: 0
@@ -247,6 +251,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &72781704
 Transform:
   m_ObjectHideFlags: 0
@@ -338,6 +344,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &174392990
 Transform:
   m_ObjectHideFlags: 0
@@ -490,6 +498,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &269795275
 Transform:
   m_ObjectHideFlags: 0
@@ -537,6 +547,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &316155323
 Transform:
   m_ObjectHideFlags: 0
@@ -584,6 +596,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &317856419
 Transform:
   m_ObjectHideFlags: 0
@@ -631,6 +645,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &473335743
 Transform:
   m_ObjectHideFlags: 0
@@ -678,6 +694,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 1
 --- !u!4 &568400752
 Transform:
   m_ObjectHideFlags: 0
@@ -725,6 +743,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &626696539
 Transform:
   m_ObjectHideFlags: 0
@@ -772,6 +792,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &642687057
 Transform:
   m_ObjectHideFlags: 0
@@ -819,6 +841,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &722074678
 Transform:
   m_ObjectHideFlags: 0
@@ -866,6 +890,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 1
 --- !u!4 &767726860
 Transform:
   m_ObjectHideFlags: 0
@@ -913,6 +939,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &795506175
 Transform:
   m_ObjectHideFlags: 0
@@ -960,6 +988,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &896021581
 Transform:
   m_ObjectHideFlags: 0
@@ -1007,6 +1037,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &899955351
 Transform:
   m_ObjectHideFlags: 0
@@ -1054,6 +1086,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1059513596
 Transform:
   m_ObjectHideFlags: 0
@@ -1101,6 +1135,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1114659660
 Transform:
   m_ObjectHideFlags: 0
@@ -1148,6 +1184,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1158732372
 Transform:
   m_ObjectHideFlags: 0
@@ -1195,6 +1233,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1267195755
 Transform:
   m_ObjectHideFlags: 0
@@ -1360,6 +1400,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1402005955
 Transform:
   m_ObjectHideFlags: 0
@@ -1407,6 +1449,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1418058301
 Transform:
   m_ObjectHideFlags: 0
@@ -1454,6 +1498,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1456612802
 Transform:
   m_ObjectHideFlags: 0
@@ -1501,6 +1547,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1537973079
 Transform:
   m_ObjectHideFlags: 0
@@ -1548,6 +1596,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1547453558
 Transform:
   m_ObjectHideFlags: 0
@@ -1595,6 +1645,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1585927765
 Transform:
   m_ObjectHideFlags: 0
@@ -1642,6 +1694,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1592008002
 Transform:
   m_ObjectHideFlags: 0
@@ -1689,6 +1743,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1666553835
 Transform:
   m_ObjectHideFlags: 0
@@ -1877,6 +1933,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1744730384
 Transform:
   m_ObjectHideFlags: 0
@@ -1924,6 +1982,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1766480133
 Transform:
   m_ObjectHideFlags: 0
@@ -1985,6 +2045,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!1 &1887795259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,6 +2080,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 1
 --- !u!4 &1887795261
 Transform:
   m_ObjectHideFlags: 0
@@ -2065,6 +2129,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 0
 --- !u!4 &1984148251
 Transform:
   m_ObjectHideFlags: 0
@@ -2112,6 +2178,8 @@ MonoBehaviour:
     type: 3}
   enemyObjects: {fileID: 11400000, guid: ce2c6dd9f1ba95448a25ce1b882da216, type: 2}
   ammoObject: {fileID: 11400000, guid: e5a62e59210eecc4cb3ad0e115afd9cf, type: 2}
+  triangleObjects: {fileID: 11400000, guid: f61b9d6d48363da4d9f03775741324e8, type: 2}
+  haveBigTriangle: 1
 --- !u!4 &2068521166
 Transform:
   m_ObjectHideFlags: 0
