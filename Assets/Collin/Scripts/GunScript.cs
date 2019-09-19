@@ -32,7 +32,7 @@ public class GunScript : MonoBehaviour
 
     private void Start()
     {
-        GunType type = (GunType)Random.Range(0, 3);
+        GunType type = (GunType)Random.Range(0, 4);
 
         if (type == GunType.Pistol)
         {
@@ -62,8 +62,9 @@ public class GunScript : MonoBehaviour
     {
         if (hit.tag.Contains("Player"))
         {
-            Debug.Log("hess");
+            //Debug.Log("hess");
             PlayerScript.Instance.SetCurrentWeapon(currentGun);
+            Destroy(gameObject);
         }
     }
 }

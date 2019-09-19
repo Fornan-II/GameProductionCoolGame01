@@ -9843,7 +9843,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &4244930096222552544
 CircleCollider2D:
@@ -9883,7 +9883,10 @@ MonoBehaviour:
     gunObject: {fileID: 3141337738295790980}
     knockback: 1500
   gunTransform: {fileID: 4519220185785437427}
-  knockbackMultiplier: 900
+  SlowMotionRange: 10
+  SlowMotionLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
   torqueMultiplier: 1
   background: {fileID: 0}
   shakeAmount: 1

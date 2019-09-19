@@ -3418,7 +3418,7 @@ PrefabInstance:
     - target: {fileID: 4244930096222552559, guid: 3f0efa5f5a600734dbdb929ab0e65732,
         type: 3}
       propertyPath: currentWeapon.knockback
-      value: 900
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f0efa5f5a600734dbdb929ab0e65732, type: 3}

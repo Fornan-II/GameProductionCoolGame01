@@ -31,6 +31,7 @@ public class PrefabPool : ScriptableObject
             chosenWeight -= _poolItems[currentItemIndex].weight.Evaluate(curvePosition);
         }
 
+        currentItemIndex = Mathf.Clamp(currentItemIndex, 0, _poolItems.Count - 1);
         return _poolItems[currentItemIndex].prefab;
     }
 }

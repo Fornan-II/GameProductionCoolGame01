@@ -124,17 +124,17 @@ MonoBehaviour:
     type: 0
     gunObject: {fileID: 1625008053084663448, guid: b947862235b96ff4bb5bce69f83a6c71,
       type: 3}
-    knockback: 900
+    knockback: 500
   shotgun:
     type: 1
     gunObject: {fileID: 5904619279400879058, guid: 9c79739a32e345d4f9aff0b6af127aac,
       type: 3}
-    knockback: 900
+    knockback: 600
   sniper:
     type: 2
     gunObject: {fileID: 4936530766021839131, guid: 09afbb31c7f404d4faae10d23a84bba4,
       type: 3}
-    knockback: 1000
+    knockback: 800
   minigun:
     type: 3
     gunObject: {fileID: 8356118336302208202, guid: c9418c353d9c4414dae128674a4b46c7,

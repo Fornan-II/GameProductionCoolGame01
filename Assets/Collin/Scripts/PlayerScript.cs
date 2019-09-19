@@ -25,6 +25,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GunScript.Gun currentWeapon;
     [SerializeField] private Transform gunTransform;
 
+    [SerializeField] private float SlowMotionRange = 10.0f;
+    [SerializeField] private LayerMask SlowMotionLayerMask;
+
     [SerializeField] private float torqueMultiplier = 0;
     private bool switchDirection = false;
 
@@ -111,6 +114,7 @@ public class PlayerScript : MonoBehaviour
         BackgroundScroll();
         ClampTransform();
         Score();
+        SniperSlowMo();
     }
 
     private void OnCollisionEnter2D(Collision2D hit)
@@ -187,18 +191,21 @@ public class PlayerScript : MonoBehaviour
             }
             else if (currentWeapon.type == GunScript.GunType.Minigun)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
-                    bulletFlash.Play();
-                    ScreenShake();
-                    playerRig.AddForce(-transform.right * currentWeapon.knockback);
-                    float timer = 0.3f;
-                    while (timer > 0)
-                    {
-                        timer -= Time.deltaTime;
-                    }
-                }
+                StartCoroutine(ShootXBulletsForYSeconds(3, 0.5f));
+
+                //This code has been moved to a coroutine -Max
+                //for (int i = 0; i < 3; i++)
+                //{
+                //    Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
+                //    bulletFlash.Play();
+                //    ScreenShake();
+                //    playerRig.AddForce(-transform.right * currentWeapon.knockback);
+                //    float timer = 0.3f;
+                //    while (timer > 0)
+                //    {
+                //        timer -= Time.deltaTime;
+                //    }
+                //}
             }
             else if (currentWeapon.type == GunScript.GunType.Shotgun)
             {
@@ -344,7 +351,47 @@ public class PlayerScript : MonoBehaviour
         currentWeapon = aGun;
     }
 
+    private void SniperSlowMo()
+    {
+        Vector2 boxCenter = transform.position + transform.right * SlowMotionRange * 0.5f;
+        Vector2 boxSize = new Vector2(SlowMotionRange, 1.0f);
 
+        bool slowMoInactive = true;
+        if (currentWeapon.type == GunScript.GunType.Sniper)
+        {
+            List<Collider2D> foundColliders = new List<Collider2D>();
+            Collider2D foundCollider = Physics2D.OverlapBox(boxCenter, boxSize, transform.rotation.eulerAngles.z, SlowMotionLayerMask);
+            if (foundCollider)
+            {
+                Time.timeScale = 0.5f;
+                slowMoInactive = false;
+            }
+        }
+        
+        if(slowMoInactive)
+        {
+            Time.timeScale = 1.0f;
+        }
+    }
 
+    protected IEnumerator ShootXBulletsForYSeconds(int xBullets, float ySeconds)
+    {
+        float timeBetweenBullets = ySeconds / (float)xBullets;
 
+        //Only play knockback first shot - otherwise very uncontrollable
+        playerRig.AddForce(-transform.right * currentWeapon.knockback);
+        for (int bulletsShot = 0; bulletsShot < xBullets; bulletsShot++)
+        {
+            Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
+            bulletFlash.Play();
+            ScreenShake();
+            
+            float timer = 0.0f;
+            while (timer < timeBetweenBullets)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+        }
+    }
 }
