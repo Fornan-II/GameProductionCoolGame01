@@ -10,6 +10,10 @@ public class LevelGeneratingScript : MonoBehaviour
 
     public PrefabPool ammoObject;
 
+    public PrefabPool triangleObjects; 
+
+    public bool haveBigTriangle; //if a triangle spawns, should it be the bigger one
+
     private int randNum;
 
     private GameObject newOb; //The newly spawned object
@@ -32,7 +36,15 @@ public class LevelGeneratingScript : MonoBehaviour
 
         if (randNum == 1 || randNum == 4)
         {
-            newOb = triangleObject;
+            if(haveBigTriangle == true)
+            {
+                newOb = triangleObject;
+            }
+            else
+            {
+                newOb = triangleObjects.GetRandomItem(PlayerScript.Instance.transform.position.y);
+            }
+
         }
         else if (randNum == 2)
         {
@@ -66,7 +78,6 @@ public class LevelGeneratingScript : MonoBehaviour
                 createdObject = Instantiate(newOb, transform.position, transform.rotation);
             }
         }
-
-        //createdObject.transform.parent = gameObject.transform;
+        
     }
 }
