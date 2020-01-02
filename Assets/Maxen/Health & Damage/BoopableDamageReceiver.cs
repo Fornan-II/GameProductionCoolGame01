@@ -35,8 +35,11 @@ public class BoopableDamageReceiver : DamageReceiver
         else
         {
             //Other DR is taking damage
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb?.AddForce(knockbackVector, ForceMode2D.Impulse);
+            Rigidbody2D rb;
+            if(TryGetComponent(out rb))
+            {
+                rb.AddForce(knockbackVector, ForceMode2D.Impulse);
+            }
             DamageReceiver otherDR = collision.transform.GetComponent<DamageReceiver>();
             otherDR?.TakeDamage(new DamagePacket(DamageType.COLLISION, damageAmount, -knockbackVector));
             if(otherDR)

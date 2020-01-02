@@ -45,11 +45,10 @@ public class PlayerScript : MonoBehaviour
         private set;
     }
 
-
+    [SerializeField] private MenuScript menu;
     [SerializeField]
     private GameObject playerUI;
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI finalScoreText;
 
@@ -321,10 +320,12 @@ public class PlayerScript : MonoBehaviour
     private void Die()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
-        gameOverText.gameObject.transform.localScale = Vector3.one * 2;
-        iTween.ScaleTo(gameOverText.gameObject, iTween.Hash("scale", Vector3.one, "time", 2, "easetype", iTween.EaseType.easeOutElastic));
+
+        menu.AllowPausing = false;
+        menu.ChangeMenuTo(2);
+
         finalScoreText.text = string.Format("Your Final Score Is: {0}", (int)score);
-        restartManager.SetActive(true);
+        //restartManager.SetActive(true);
     }
 
     private void TakeDamage(DamagePacket damage)
@@ -363,14 +364,14 @@ public class PlayerScript : MonoBehaviour
             Collider2D foundCollider = Physics2D.OverlapBox(boxCenter, boxSize, transform.rotation.eulerAngles.z, SlowMotionLayerMask);
             if (foundCollider)
             {
-                Time.timeScale = 0.5f;
+                TimeManager.SetRunTimeScale(0.5f);
                 slowMoInactive = false;
             }
         }
         
         if(slowMoInactive)
         {
-            Time.timeScale = 1.0f;
+            TimeManager.SetRunTimeScale(1.0f);
         }
     }
 

@@ -25,7 +25,8 @@ public class RestartScript : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadSceneAsync("Master Game Scene");
+                //Pop up a menu that says "Play again" or "Return to main menu" - play again is default option
+                SceneManager.LoadSceneAsync(0);
             }
             
         }
