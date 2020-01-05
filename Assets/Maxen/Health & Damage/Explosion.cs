@@ -38,6 +38,6 @@ public class Explosion
                 dr.TakeDamage(GetDamagePacket(explosionPoint, hitPoint), hitPoint);
             }
         }
-        PlayerScript.Instance?.ScreenShake();
+        CameraFX.MainCamera.ScreenShake();
     }
 }

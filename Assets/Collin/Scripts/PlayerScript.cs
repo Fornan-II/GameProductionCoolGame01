@@ -14,26 +14,15 @@ public class PlayerScript : MonoBehaviour
     private bool dying = false;
 
     [SerializeField] private int timeTilStart = 10;
+    [SerializeField] private float initialKnockback = 500.0f;
 
-    //Where the bullet will spawn
-    [SerializeField] private Transform bulletSpawnPosition;
-    //The bullet
-    [SerializeField] private GameObject bulletPrefab;
-    //Particle for when the bullet is fired
-    [SerializeField] private ParticleSystem bulletFlash;
-
-    [SerializeField] private GunScript.Gun currentWeapon;
     [SerializeField] private Transform gunTransform;
-
-    [SerializeField] private float SlowMotionRange = 10.0f;
-    [SerializeField] private LayerMask SlowMotionLayerMask;
+    [SerializeField] private Gun currentWeapon;
 
     [SerializeField] private float torqueMultiplier = 0;
     private bool switchDirection = false;
 
     [SerializeField] private GameObject background;
-
-    [SerializeField] private float shakeAmount = 1;
 
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private ParticleSystem healthParticle;
@@ -86,11 +75,13 @@ public class PlayerScript : MonoBehaviour
         {
             playerDamageReceiver.OnTakeDamage += TakeDamage;
         }
+
+        currentWeapon.OnEquip();
     }
 
     private IEnumerator PlayerInput()
     {
-        playerRig.AddForce(Vector2.up * currentWeapon.knockback);
+        playerRig.AddForce(Vector2.up * initialKnockback);
         playerRig.AddTorque(torqueMultiplier, ForceMode2D.Impulse);
 
         alive = true;
@@ -113,7 +104,6 @@ public class PlayerScript : MonoBehaviour
         BackgroundScroll();
         ClampTransform();
         Score();
-        SniperSlowMo();
     }
 
     private void OnCollisionEnter2D(Collision2D hit)
@@ -160,18 +150,12 @@ public class PlayerScript : MonoBehaviour
         offset.y = background.transform.position.y / background.transform.localScale.y;
         background.GetComponent<MeshRenderer>().material.mainTextureOffset = offset;
     }
-    //Shakes the screen (camera)
-    public void ScreenShake()
-    {
-        iTween.ShakePosition(Camera.main.gameObject, iTween.Hash("amount", Vector3.one * shakeAmount, "time", 0.05f));
-    }
+    
     //Shoots the projectile and adds the force/torque to the player
     private void Shoot()
     {
-
-
         playerRig.velocity = Vector3.zero;
-        playerRig.AddForce(-transform.right * currentWeapon.knockback);
+        playerRig.AddForce(-transform.right * currentWeapon.ShootKnockback);
 
         switchDirection = !switchDirection;
         if (switchDirection)
@@ -179,48 +163,7 @@ public class PlayerScript : MonoBehaviour
         else
             playerRig.AddTorque(-torqueMultiplier, ForceMode2D.Impulse);
 
-        if (bulletPrefab && bulletSpawnPosition)
-        {
-            if (currentWeapon.type == GunScript.GunType.Pistol || currentWeapon.type == GunScript.GunType.Sniper)
-            {
-                Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
-                bulletFlash.Play();
-                ScreenShake();
-                playerRig.AddForce(-transform.right * currentWeapon.knockback);
-            }
-            else if (currentWeapon.type == GunScript.GunType.Minigun)
-            {
-                StartCoroutine(ShootXBulletsForYSeconds(3, 0.5f));
-
-                //This code has been moved to a coroutine -Max
-                //for (int i = 0; i < 3; i++)
-                //{
-                //    Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
-                //    bulletFlash.Play();
-                //    ScreenShake();
-                //    playerRig.AddForce(-transform.right * currentWeapon.knockback);
-                //    float timer = 0.3f;
-                //    while (timer > 0)
-                //    {
-                //        timer -= Time.deltaTime;
-                //    }
-                //}
-            }
-            else if (currentWeapon.type == GunScript.GunType.Shotgun)
-            {
-                Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
-                Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation * Quaternion.Euler(0, 0, 15));
-                Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation * Quaternion.Euler(0, 0, -15));
-                bulletFlash.Play();
-                ScreenShake();
-                playerRig.AddForce(-transform.right * currentWeapon.knockback);
-            }
-
-
-        }
-
-        else
-            Debug.LogError("Please set the bullet spawn position or the bullet prefab");
+        currentWeapon.Shoot();
     }
     //Keeps the camera locked to the player
     private void CameraMovement()
@@ -330,7 +273,7 @@ public class PlayerScript : MonoBehaviour
 
     private void TakeDamage(DamagePacket damage)
     {
-        ScreenShake();
+        CameraFX.MainCamera.ScreenShake();
         currentHealth -= damage.DamageAmount;
         healthText.gameObject.transform.localScale = Vector3.one * 3f;
         iTween.ScaleTo(healthText.gameObject, iTween.Hash("scale", Vector3.one, "time", 1f, "easetype", iTween.EaseType.easeOutElastic));
@@ -342,57 +285,18 @@ public class PlayerScript : MonoBehaviour
         //Check for if less than 0 and die
     }
 
-    public void SetCurrentWeapon(GunScript.Gun aGun)
+    public void SetCurrentWeapon(Gun aGun)
     {
-        foreach (Transform g in gunTransform)
-        {
-            Destroy(g.gameObject);
-        }
-        Instantiate(aGun.gunObject, gunTransform.position, gunTransform.rotation, gunTransform);
+        Destroy(currentWeapon.gameObject);
+
         currentWeapon = aGun;
+        aGun.transform.parent = gunTransform;
+        aGun.transform.localPosition = Vector3.zero;
+        aGun.transform.localRotation = Quaternion.identity;
+        aGun.transform.localScale = Vector3.one;
+
+        aGun.OnEquip();
     }
 
-    private void SniperSlowMo()
-    {
-        Vector2 boxCenter = transform.position + transform.right * SlowMotionRange * 0.5f;
-        Vector2 boxSize = new Vector2(SlowMotionRange, 1.0f);
-
-        bool slowMoInactive = true;
-        if (currentWeapon.type == GunScript.GunType.Sniper)
-        {
-            List<Collider2D> foundColliders = new List<Collider2D>();
-            Collider2D foundCollider = Physics2D.OverlapBox(boxCenter, boxSize, transform.rotation.eulerAngles.z, SlowMotionLayerMask);
-            if (foundCollider)
-            {
-                TimeManager.SetRunTimeScale(0.5f);
-                slowMoInactive = false;
-            }
-        }
-        
-        if(slowMoInactive)
-        {
-            TimeManager.SetRunTimeScale(1.0f);
-        }
-    }
-
-    protected IEnumerator ShootXBulletsForYSeconds(int xBullets, float ySeconds)
-    {
-        float timeBetweenBullets = ySeconds / (float)xBullets;
-
-        //Only play knockback first shot - otherwise very uncontrollable
-        playerRig.AddForce(-transform.right * currentWeapon.knockback);
-        for (int bulletsShot = 0; bulletsShot < xBullets; bulletsShot++)
-        {
-            Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
-            bulletFlash.Play();
-            ScreenShake();
-            
-            float timer = 0.0f;
-            while (timer < timeBetweenBullets)
-            {
-                timer += Time.deltaTime;
-                yield return null;
-            }
-        }
-    }
+    
 }

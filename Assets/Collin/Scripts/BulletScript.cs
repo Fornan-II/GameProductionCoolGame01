@@ -14,10 +14,18 @@ public class BulletScript : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(DestroyTimer(timeTilDestroy));
-        SetVelocity(bulletSpeed);
+        //Initialize();
+    }
+
+    public void Initialize(int damage, float kbScalar, float bulletSpeed)
+    {
+        Destroy(gameObject, timeTilDestroy);
+
+        Damage = damage;
+        KnockbackScalar = kbScalar;
 
         bulletRig = GetComponent<Rigidbody2D>();
+        SetVelocity(bulletSpeed);
     }
 
     private void SetVelocity(float aVelocityMultiplier)
@@ -25,15 +33,12 @@ public class BulletScript : MonoBehaviour
         bulletRig.velocity = transform.right * aVelocityMultiplier;
     }
 
-    private IEnumerator DestroyTimer(float aTimeTilDestroy)
-    {
-        yield return new WaitForSecondsRealtime(aTimeTilDestroy);
-        Destroy(gameObject);
-    }
-
     private void OnTriggerEnter2D(Collider2D hit)
     {
-        DamageReceiver hitDR = hit.GetComponent<DamageReceiver>();
-        hitDR?.TakeDamage(new DamagePacket(DamageType.PROJECTILE, Damage, bulletRig.velocity * KnockbackScalar), hit.ClosestPoint(transform.position));
+        DamageReceiver hitDR;
+        if(hit.TryGetComponent(out hitDR))
+        {
+            hitDR.TakeDamage(new DamagePacket(DamageType.PROJECTILE, Damage, bulletRig.velocity * KnockbackScalar), hit.ClosestPoint(transform.position));
+        }
     }
 }
