@@ -8,13 +8,24 @@ public class SubMenu : MonoBehaviour
 {
     public GameObject FirstSelected;
     public UnityEvent OnBecomeActive;
+    public UnityEvent OnBecomeInactive;
 
     public void SetActive(bool value)
     {
+        bool wasActive = gameObject.activeSelf;
         gameObject.SetActive(value);
-        if (EventSystem.current && value)
+
+        if (value && !wasActive)
         {
-            EventSystem.current.SetSelectedGameObject(FirstSelected);
+            if (EventSystem.current && value)
+            {
+                EventSystem.current.SetSelectedGameObject(FirstSelected);
+            }
+
+            OnBecomeActive.Invoke();
+        }
+        else if(!value && wasActive)
+        {
             OnBecomeActive.Invoke();
         }
     }

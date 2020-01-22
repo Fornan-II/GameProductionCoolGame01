@@ -90,7 +90,7 @@ public class PlayerScript : MonoBehaviour
             yield return null;
             playerRig.angularVelocity = Mathf.Clamp(playerRig.angularVelocity, 200, Mathf.Infinity);
 
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && Time.timeScale > 0.0f)
             {
                 Shoot();
             }
