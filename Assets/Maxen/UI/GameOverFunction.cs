@@ -12,6 +12,10 @@ public class GameOverFunction : MonoBehaviour
 
     public void OnActivateAnimation()
     {
+        //Save score
+        ScoreManager.scoreList.Add(new ScoreManager.ScoreHolder(Mathf.FloorToInt(PlayerScript.Instance.transform.position.y), "Player " + (ScoreManager.scoreList.Count + 1)));
+        ScoreManager.SaveScore();
+
         transform.localScale = Vector3.one * 2;
         iTween.ScaleTo(gameObject, iTween.Hash("scale", Vector3.one, "time", 2, "easetype", iTween.EaseType.easeOutElastic));
     }
