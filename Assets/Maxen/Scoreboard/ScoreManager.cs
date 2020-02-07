@@ -27,7 +27,13 @@ public static class ScoreManager
 
 
     private static readonly string _scoreFilePath = Application.persistentDataPath + "/score.binary";
-    public static List<ScoreHolder> scoreList = new List<ScoreHolder>();
+    private const int maximumSavedScores = -1;
+
+    public static List<ScoreHolder> scoreList
+    {
+        get;
+        private set;
+    } = new List<ScoreHolder>();
 
     public static void SaveScore()
     {
@@ -59,6 +65,17 @@ public static class ScoreManager
             scoreFile.Close();
             return false;
         }
+    }
+
+    public static void AddScore(ScoreHolder newScore)
+    {
+        scoreList.Add(newScore);
+        SortScores();
+        if(maximumSavedScores > 0 && scoreList.Count > maximumSavedScores)
+        {
+            scoreList.RemoveRange(maximumSavedScores, scoreList.Count - maximumSavedScores);
+        }
+        SaveScore();
     }
 
     public static void SortScores()
