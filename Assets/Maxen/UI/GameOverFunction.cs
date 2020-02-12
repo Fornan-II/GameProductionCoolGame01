@@ -7,11 +7,16 @@ public class GameOverFunction : MonoBehaviour
 {
     public float ButtonActivateDelay = 1.0f;
     public Button[] ButtonsToActivate;
+    public NameEntry nameEntry;
 
     private Coroutine ButtonTimerCoroutine;
 
     public void OnActivateAnimation()
     {
+        //Prep score value for saving
+        if (nameEntry)
+            nameEntry.score = Mathf.FloorToInt(PlayerScript.Instance.transform.position.y);
+
         transform.localScale = Vector3.one * 2;
         iTween.ScaleTo(gameObject, iTween.Hash("scale", Vector3.one, "time", 2, "easetype", iTween.EaseType.easeOutElastic));
     }
