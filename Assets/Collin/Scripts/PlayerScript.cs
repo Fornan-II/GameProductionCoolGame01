@@ -137,8 +137,12 @@ public class PlayerScript : MonoBehaviour
         }
         if (alive && transform.position.y > 0)
         {
-            score = transform.position.y;
-            scoreText.text = "Score: " + (int)score;
+            if(transform.position.y > score)
+            {
+                score = transform.position.y;
+                scoreText.text = "Score: " + (int)score;
+            }
+            
         }
     }
 
