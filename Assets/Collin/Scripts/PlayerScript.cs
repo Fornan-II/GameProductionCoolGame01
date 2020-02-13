@@ -41,7 +41,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI finalScoreText;
 
-    private float score;
+    public float Score { get; private set; }
 
     [SerializeField] private int timeTilDeath = 5;
     [SerializeField] private int timeTilDeathBuffer = 10;
@@ -103,7 +103,7 @@ public class PlayerScript : MonoBehaviour
         CameraMovement();
         BackgroundScroll();
         ClampTransform();
-        Score();
+        ManageScore();
     }
 
     private void OnCollisionEnter2D(Collision2D hit)
@@ -122,7 +122,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void Score()
+    private void ManageScore()
     {
         if (!scoreText)
             return;
@@ -137,10 +137,10 @@ public class PlayerScript : MonoBehaviour
         }
         if (alive && transform.position.y > 0)
         {
-            if(transform.position.y > score)
+            if(transform.position.y > Score)
             {
-                score = transform.position.y;
-                scoreText.text = "Score: " + (int)score;
+                Score = transform.position.y;
+                scoreText.text = "Score: " + (int)Score;
             }
             
         }
@@ -271,7 +271,7 @@ public class PlayerScript : MonoBehaviour
         menu.AllowPausing = false;
         menu.ChangeMenuTo(2);
 
-        finalScoreText.text = string.Format("Your Final Score Is: {0}", (int)score);
+        finalScoreText.text = string.Format("Your Final Score Is: {0}", (int)Score);
         //restartManager.SetActive(true);
     }
 

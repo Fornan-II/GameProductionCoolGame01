@@ -542,7 +542,7 @@ MonoBehaviour:
   ResistCollisionDamage: 0
   ResistExplosionDamage: 0
   ResistKnockback: 0
-  UnitSpriteRenderer: {fileID: 9036781968173279735}
+  UnitSpriteRenderer: {fileID: 1994584632874644916}
   DamageRecievingAngle: 63
   knockbackStrength: 13
   boopBoost: 13

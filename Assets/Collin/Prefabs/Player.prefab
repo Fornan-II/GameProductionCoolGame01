@@ -1191,10 +1191,10 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -1247,7 +1247,7 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -1300,9 +1300,9 @@ ParticleSystem:
         m_RotationOrder: 4
     curve:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.7853982
-      minScalar: 0.7853982
+      minMaxState: 3
+      scalar: 12.56637
+      minScalar: -12.56637
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9876,10 +9876,6 @@ MonoBehaviour:
   initialKnockback: 500
   gunTransform: {fileID: 4519220185785437427}
   currentWeapon: {fileID: 1940030329096078925}
-  SlowMotionRange: 10
-  SlowMotionLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
   torqueMultiplier: 1
   background: {fileID: 0}
   healthText: {fileID: 0}

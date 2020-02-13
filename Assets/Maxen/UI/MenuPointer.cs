@@ -28,6 +28,8 @@ public class MenuPointer : MonoBehaviour
         if (hoverTarget)
         {
             pointerTarget = hoverTarget.GetComponent<RectTransform>();
+            if (!eventSystem.currentSelectedGameObject)
+                eventSystem.SetSelectedGameObject(hoverTarget.gameObject);
         }
         else if(eventSystem.currentSelectedGameObject)
         {
