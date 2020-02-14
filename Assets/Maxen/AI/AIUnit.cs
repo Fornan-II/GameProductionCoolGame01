@@ -19,8 +19,8 @@ public class AIUnit : MonoBehaviour
     //weaponScript;
 
     public bool LetProcessAI = true;
-    [SerializeField]
-    protected bool _isProcessing = false;
+    [SerializeField] protected bool _isProcessing = false;
+    [SerializeField] protected MoveToTarget healthParticlePrefab;
 
     public int DeathHealthReward = 3;
 
@@ -89,6 +89,8 @@ public class AIUnit : MonoBehaviour
             if (renderer.isVisible)
             {
                 PlayerScript.Instance?.AddHealth(DeathHealthReward);
+
+                Instantiate(healthParticlePrefab, transform.position, transform.rotation).DoMovement(PlayerScript.Instance.transform, true, false);
             }
         }
 

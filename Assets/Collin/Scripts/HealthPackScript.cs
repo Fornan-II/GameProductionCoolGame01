@@ -7,6 +7,7 @@ public class HealthPackScript : MonoBehaviour
 {
     [SerializeField] private int minHealth = 0;
     [SerializeField] private int maxHealth = 0;
+    [SerializeField] private MoveToTarget healthParticlePrefab;
 
     private int healthToAdd = 0;
 
@@ -23,6 +24,7 @@ public class HealthPackScript : MonoBehaviour
         if (hit.tag.Contains("Player"))
         {
             PlayerScript.Instance.AddHealth(healthToAdd);
+            Instantiate(healthParticlePrefab, transform.position, transform.rotation).DoMovement(PlayerScript.Instance.transform, true, false);
             Destroy(gameObject);
         }
     }

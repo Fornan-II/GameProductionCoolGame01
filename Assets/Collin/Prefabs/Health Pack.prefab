@@ -353,6 +353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minHealth: 1
   maxHealth: 3
+  healthParticlePrefab: {fileID: 6859501412337519778, guid: 1926c3a3bbcc7334c83603dec9b7795a,
+    type: 3}
   bulletText: {fileID: 316068250298158499}
 --- !u!61 &316068250589056640
 BoxCollider2D:

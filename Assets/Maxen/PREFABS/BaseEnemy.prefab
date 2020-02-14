@@ -5001,6 +5001,8 @@ MonoBehaviour:
   movement: {fileID: 6876616101651125820}
   LetProcessAI: 1
   _isProcessing: 0
+  healthParticlePrefab: {fileID: 6859501412337519778, guid: 1926c3a3bbcc7334c83603dec9b7795a,
+    type: 3}
   DeathHealthReward: 1
 --- !u!1 &6876616101690867726
 GameObject:

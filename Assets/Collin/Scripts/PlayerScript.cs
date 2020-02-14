@@ -25,7 +25,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject background;
 
     [SerializeField] private TextMeshProUGUI healthText;
-    [SerializeField] private ParticleSystem healthParticle;
     [SerializeField] private ParticleSystem damageParticle;
     [SerializeField] private int maxHealth = 25;
     public int currentHealth
@@ -67,7 +66,7 @@ public class PlayerScript : MonoBehaviour
 
 
         CountDownToStart(timeTilStart);
-        StartCoroutine(GroundCheck());
+        //StartCoroutine(GroundCheck());
 
         //Get the DamageReceiver and hook it's OnTakeDamageEvent to this script so that enemies can hurt the player's health
         DamageReceiver playerDamageReceiver = GetComponent<DamageReceiver>();
@@ -196,7 +195,6 @@ public class PlayerScript : MonoBehaviour
     {
         //Health can not exceed maxHealth
         currentHealth = Mathf.Min(maxHealth, currentHealth + aAmount);
-        healthParticle.Play();
     }
 
     public void Stall()
@@ -219,50 +217,51 @@ public class PlayerScript : MonoBehaviour
             "oncompleteparams", aCurrentNumber - 1,
             "oncompletetarget", gameObject));
     }
-    private void CountDownToDeath(int aCurrentNumber)
-    {
-        if (!dying)
-        {
-            timerText.gameObject.transform.localScale = Vector3.zero;
-            return;
-        }
 
-        if (aCurrentNumber == 0)
-        {
-            timerText.gameObject.transform.localScale = Vector3.zero;
-            alive = false;
-            return;
-        }
+    //private void CountDownToDeath(int aCurrentNumber)
+    //{
+    //    if (!dying)
+    //    {
+    //        timerText.gameObject.transform.localScale = Vector3.zero;
+    //        return;
+    //    }
 
-        timerText.text = aCurrentNumber.ToString();
-        timerText.gameObject.transform.localScale = Vector3.one * 4;
-        iTween.ScaleTo(timerText.gameObject, iTween.Hash("scale", Vector3.one, "time", 1, "easetype", iTween.EaseType.easeOutElastic,
-            "oncomplete", "CountDownToDeath",
-            "oncompleteparams", aCurrentNumber - 1,
-            "oncompletetarget", gameObject));
-    }
+    //    if (aCurrentNumber == 0)
+    //    {
+    //        timerText.gameObject.transform.localScale = Vector3.zero;
+    //        alive = false;
+    //        return;
+    //    }
 
-    private IEnumerator GroundCheck()
-    {
-        while (true)
-        {
-            yield return new WaitUntil(() => dying);
-            int timer = timeTilDeathBuffer;
-            while (timer > 0)
-            {
-                yield return new WaitForSeconds(1);
-                timer--;
-                if (!dying)
-                    break;
-            }
-            if (dying)
-            {
-                CountDownToDeath(timeTilDeath);
-            }
-            yield return new WaitUntil(() => !dying);
-        }
+    //    timerText.text = aCurrentNumber.ToString();
+    //    timerText.gameObject.transform.localScale = Vector3.one * 4;
+    //    iTween.ScaleTo(timerText.gameObject, iTween.Hash("scale", Vector3.one, "time", 1, "easetype", iTween.EaseType.easeOutElastic,
+    //        "oncomplete", "CountDownToDeath",
+    //        "oncompleteparams", aCurrentNumber - 1,
+    //        "oncompletetarget", gameObject));
+    //}
 
-    }
+    //private IEnumerator GroundCheck()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitUntil(() => dying);
+    //        int timer = timeTilDeathBuffer;
+    //        while (timer > 0)
+    //        {
+    //            yield return new WaitForSeconds(1);
+    //            timer--;
+    //            if (!dying)
+    //                break;
+    //        }
+    //        if (dying)
+    //        {
+    //            CountDownToDeath(timeTilDeath);
+    //        }
+    //        yield return new WaitUntil(() => !dying);
+    //    }
+
+    //}
 
     private void Die()
     {
