@@ -42,6 +42,19 @@ MonoBehaviour:
   explosionParticles: {fileID: 4625334255841003871, guid: a6da427e5a9991342bfd4c1782af2f94,
     type: 3}
   _damageReceiver: {fileID: 7930636823045027652}
+--- !u!114 &8713605559475845042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735567899342089582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29b6cca4d0eea147a8276c9f43e5b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isTargetable: 1
 --- !u!1 &7150806885552635508
 GameObject:
   m_ObjectHideFlags: 0

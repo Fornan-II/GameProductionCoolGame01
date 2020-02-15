@@ -9,9 +9,9 @@ public class Explosion
     public float EffectiveRadius = 5.0f;
     public float BaseKnockbackStrength = 10.0f;
 
-    public DamagePacket GetDamagePacket(Vector2 explosionPoint, Vector2 hitPoint)
+    public DamagePacket GetDamagePacket(Vector2 explosionPoint, Vector2 hitPoint, IDamageDealer explosionCauser)
     {
-        DamagePacket packet = new DamagePacket(DamageType.EXPLOSION);
+        DamagePacket packet = new DamagePacket(DamageType.EXPLOSION, explosionCauser);
 
         Vector2 vecToHitPoint = hitPoint - explosionPoint;
 
@@ -25,7 +25,7 @@ public class Explosion
         return packet;
     }
 
-    public void ExplodeAt(Vector2 explosionPoint)
+    public void ExplodeAt(Vector2 explosionPoint, IDamageDealer explosionCauser)
     {
         Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(explosionPoint, EffectiveRadius);
 
@@ -35,7 +35,7 @@ public class Explosion
             if(dr)
             {
                 Vector2 hitPoint = col.OverlapPoint(explosionPoint) ? (Vector2)col.transform.position : col.ClosestPoint(explosionPoint);
-                dr.TakeDamage(GetDamagePacket(explosionPoint, hitPoint), hitPoint);
+                dr.TakeDamage(GetDamagePacket(explosionPoint, hitPoint, explosionCauser), hitPoint);
             }
         }
         CameraFX.MainCamera.ScreenShake();

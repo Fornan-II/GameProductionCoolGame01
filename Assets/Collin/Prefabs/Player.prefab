@@ -4986,9 +4986,11 @@ MonoBehaviour:
   torqueMultiplier: 1
   background: {fileID: 0}
   healthText: {fileID: 0}
-  healthParticle: {fileID: 0}
   damageParticle: {fileID: 112581536}
+  healthParticle: {fileID: 6859501412337519778, guid: 1926c3a3bbcc7334c83603dec9b7795a,
+    type: 3}
   maxHealth: 5
+  playerDamageReceiver: {fileID: 6604341057272801604}
   menu: {fileID: 0}
   playerUI: {fileID: 0}
   timerText: {fileID: 0}
@@ -5012,8 +5014,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a4a7c6c05787942a61683c8998a142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 999
-  CanDie: 0
+  _health: 5
+  CanDie: 1
   ResistProjectileDamage: 0
   ResistCollisionDamage: 0
   ResistExplosionDamage: 1

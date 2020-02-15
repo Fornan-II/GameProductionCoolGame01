@@ -5174,12 +5174,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7148219458351365142}
   - component: {fileID: 7148219458351365141}
-  - component: {fileID: 7148219458351365140}
   - component: {fileID: 7189960191690172524}
   - component: {fileID: 7148219458351365146}
   - component: {fileID: 7148219458351365137}
-  - component: {fileID: 5790348601242873658}
+  - component: {fileID: 214880863309966813}
   - component: {fileID: 7278298233560489824}
+  - component: {fileID: 5526714642608417799}
+  - component: {fileID: 3999294771801497669}
   m_Layer: 9
   m_Name: FlappyEnemy
   m_TagString: Untagged
@@ -5253,29 +5254,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7148219458351365140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7148219458351365145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a63e384c428fe64ea78b747fa068ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 1
-  CanDie: 1
-  ResistProjectileDamage: 0
-  ResistCollisionDamage: 0
-  ResistExplosionDamage: 0
-  ResistKnockback: 0
-  UnitSpriteRenderer: {fileID: 1377869010989322036}
-  DamageRecievingAngle: 180
-  knockbackStrength: 13
-  boopBoost: 13
-  damageAmount: 3
 --- !u!58 &7189960191690172524
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5328,10 +5306,9 @@ MonoBehaviour:
   movement: {fileID: 7278298233560489824}
   LetProcessAI: 1
   _isProcessing: 0
-  healthParticlePrefab: {fileID: 6859501412337519778, guid: 1926c3a3bbcc7334c83603dec9b7795a,
-    type: 3}
-  DeathHealthReward: 2
---- !u!114 &5790348601242873658
+  _deathDestroyDelay: 0
+  DeathHealthReward: 3
+--- !u!114 &214880863309966813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5340,16 +5317,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 7148219458351365145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 060ccebdb732c0d4bb22d210f273768d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a63e384c428fe64ea78b747fa068ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionData:
-    BaseDamageAmount: 5
-    EffectiveRadius: 10
-    BaseKnockbackStrength: 20
-  explosionParticles: {fileID: 4625334255841003871, guid: a6da427e5a9991342bfd4c1782af2f94,
-    type: 3}
-  _damageReceiver: {fileID: 7148219458351365140}
+  _health: 1
+  CanDie: 1
+  ResistProjectileDamage: 0
+  ResistCollisionDamage: 0
+  ResistExplosionDamage: 0
+  ResistKnockback: 0
+  UnitSpriteRenderer: {fileID: 1377869010989322036}
+  DamageRecievingAngle: 0
+  knockbackStrength: 3
+  boopBoost: 13
+  damageAmount: 3
 --- !u!114 &7278298233560489824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5373,5 +5354,37 @@ MonoBehaviour:
   aggroXDistance: 2
   aggroYDistance: 20
   diveBombForce: 3
-  _unitDamageReciever: {fileID: 7148219458351365140}
+  _unitDamageReciever: {fileID: 214880863309966813}
   _unit: {fileID: 7148219458351365137}
+--- !u!114 &5526714642608417799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148219458351365145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060ccebdb732c0d4bb22d210f273768d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionData:
+    BaseDamageAmount: 5
+    EffectiveRadius: 15
+    BaseKnockbackStrength: 20
+  explosionParticles: {fileID: 4625334255841003871, guid: a6da427e5a9991342bfd4c1782af2f94,
+    type: 3}
+  _damageReceiver: {fileID: 214880863309966813}
+--- !u!114 &3999294771801497669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148219458351365145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29b6cca4d0eea147a8276c9f43e5b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isTargetable: 1

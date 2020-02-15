@@ -11,14 +11,13 @@ public class FlappyBomber : FlappyMovement
 
     [SerializeField] protected BoopableDamageReceiver _unitDamageReciever;
     [SerializeField] protected AIUnit _unit;
-
     
     protected bool _primed = false;
 
     protected override void Start()
     {
         base.Start();
-        _unitDamageReciever.OnDealDamage += OnBoop;
+        _unitDamageReciever.OnDealDamage += (receiver, dealer) => { _unitDamageReciever.Die(_unit); };
     }
 
     public override void ProcessMovement(float deltaTime)
@@ -40,11 +39,16 @@ public class FlappyBomber : FlappyMovement
         }
     }
 
-    protected virtual void OnBoop(DamageReceiver boopedDR)
-    {
-        _unit.DeathHealthReward = 0;
-        _unitDamageReciever.TakeDamage(new DamagePacket(DamageType.COLLISION, _unitDamageReciever.Health));
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("collided w " + collision.transform.name);
+    //    if(collision.transform.TryGetComponent(out PlayerScript player))
+    //    {
+    //        if (player.TryGetComponent(out DamageReceiver dr))
+    //            dr.TakeDamage(new DamagePacket(DamageType.COLLISION, _explosionDirectDamage, _unit));
+    //        _unitDamageReciever.TakeDamage(new DamagePacket(DamageType.COLLISION, _unit));
+    //    }
+    //}
 
 #if UNITY_EDITOR
     protected virtual void OnValidate()

@@ -8,20 +8,20 @@ public class DeathExplosive : MonoBehaviour
     public GameObject explosionParticles;
 
     [SerializeField] protected DamageReceiver _damageReceiver;
-
+    
     protected virtual void Start()
     {
         _damageReceiver.OnDeath += OnDeath;
     }
 
-    protected virtual void OnDeath(DamageReceiver dr)
+    protected virtual void OnDeath(DamageReceiver dr, IDamageDealer killer)
     {
         if(explosionParticles)
         {
             Instantiate(explosionParticles, transform.position, explosionParticles.transform.rotation);
         }
 
-        explosionData.ExplodeAt(transform.position);
+        explosionData.ExplodeAt(transform.position, killer);
     }
 
 #if UNITY_EDITOR

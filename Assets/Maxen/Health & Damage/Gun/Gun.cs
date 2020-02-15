@@ -22,21 +22,21 @@ public class Gun : MonoBehaviour
         _bulletSpawn.gameObject.SetActive(true);
     }
 
-    public virtual void Shoot()
+    public virtual void Shoot(IDamageDealer shooter)
     {
-        Instantiate(_bullet, _bulletSpawn.position, _bulletSpawn.rotation).Initialize(_damage, _knockbackScalar, _bulletSpeed);
+        Instantiate(_bullet, _bulletSpawn.position, _bulletSpawn.rotation).Initialize(_damage, _knockbackScalar, _bulletSpeed, shooter);
         _bulletFlash.Play();
         CameraFX.MainCamera.ScreenShake();
     }
 
-    protected IEnumerator ShootXBulletsForYSeconds(int xBullets, float ySeconds)
+    protected IEnumerator ShootXBulletsForYSeconds(int xBullets, float ySeconds, IDamageDealer shooter)
     {
         float timeBetweenBullets = ySeconds / (float)xBullets;
 
         //Only apply knockback first shot - otherwise very uncontrollable
         for (int bulletsShot = 0; bulletsShot < xBullets; bulletsShot++)
         {
-            Instantiate(_bullet, _bulletSpawn.position, _bulletSpawn.rotation).Initialize(_damage, _knockbackScalar, _bulletSpeed);
+            Instantiate(_bullet, _bulletSpawn.position, _bulletSpawn.rotation).Initialize(_damage, _knockbackScalar, _bulletSpeed, shooter);
             _bulletFlash.Play();
             CameraFX.MainCamera.ScreenShake();
 

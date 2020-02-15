@@ -5,24 +5,38 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BulletScript : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed = 0;
     [SerializeField] private float timeTilDestroy = 0;
-    [SerializeField] private int Damage = 3;
-    [SerializeField] private float KnockbackScalar = 1.0f;
+
+    private float bulletSpeed = 0;
+    private int Damage = 3;
+    private float KnockbackScalar = 1.0f;
+    private IDamageDealer bulletSource;
 
     [SerializeField]private Rigidbody2D bulletRig;
 
-    private void Start()
+    [SerializeField] private Renderer _renderer;
+    private float _timeSinceVisible = 0.0f;
+
+    private void Update()
     {
-        //Initialize();
+        if(_renderer.isVisible)
+        {
+            _timeSinceVisible = 0.0f;
+        }
+        else
+        {
+            if (_timeSinceVisible >= timeTilDestroy)
+                Destroy(gameObject);
+
+            _timeSinceVisible += Time.deltaTime;
+        }
     }
 
-    public void Initialize(int damage, float kbScalar, float bulletSpeed)
+    public void Initialize(int damage, float kbScalar, float bulletSpeed, IDamageDealer source)
     {
-        Destroy(gameObject, timeTilDestroy);
-
         Damage = damage;
         KnockbackScalar = kbScalar;
+        bulletSource = source;
 
         bulletRig = GetComponent<Rigidbody2D>();
         SetVelocity(bulletSpeed);
@@ -38,7 +52,15 @@ public class BulletScript : MonoBehaviour
         DamageReceiver hitDR;
         if(hit.TryGetComponent(out hitDR))
         {
-            hitDR.TakeDamage(new DamagePacket(DamageType.PROJECTILE, Damage, bulletRig.velocity * KnockbackScalar), hit.ClosestPoint(transform.position));
+            hitDR.TakeDamage(new DamagePacket(DamageType.PROJECTILE, Damage, bulletRig.velocity * KnockbackScalar, bulletSource), hit.ClosestPoint(transform.position));
         }
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (!_renderer)
+            _renderer = GetComponent<Renderer>();
+    }
+#endif
 }

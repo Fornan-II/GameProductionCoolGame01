@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -146,6 +147,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838ac5cf48aa57948895711a90b16a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 519420031}
+  shakeAmount: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1115,11 +1130,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlappyEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7148219458351365145, guid: 5e741a5e0e0d5034ab0e2a64932c5b56,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7148219458351365142, guid: 5e741a5e0e0d5034ab0e2a64932c5b56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1192,7 +1202,7 @@ PrefabInstance:
     - target: {fileID: 1994584632874644920, guid: 864588d8ab471d749822f486acff5925,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1994584632874644919, guid: 864588d8ab471d749822f486acff5925,
         type: 3}
@@ -1202,7 +1212,7 @@ PrefabInstance:
     - target: {fileID: 1994584632874644919, guid: 864588d8ab471d749822f486acff5925,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 5.69
       objectReference: {fileID: 0}
     - target: {fileID: 1994584632874644919, guid: 864588d8ab471d749822f486acff5925,
         type: 3}

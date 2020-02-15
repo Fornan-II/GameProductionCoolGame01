@@ -15,18 +15,28 @@ public class DamageReceiver : MonoBehaviour
         get { return _health; }
     }
 
+    public bool IsAlive { get { return _health > 0; } }
+
     //Info for differentiating between damage types
     public bool CanDie = true;
     public bool ResistProjectileDamage = false;
     public bool ResistCollisionDamage = false;
     public bool ResistExplosionDamage = false;
     public bool ResistKnockback = false;
+    public bool DoDamageFlash = true;
 
     //Event information for when this DamageReciever "dies"
-    public delegate void DamageReceiverEvent(DamageReceiver dr);
+    public delegate void DamageReceiverEvent(DamageReceiver receiver, IDamageDealer dealer);
     public delegate void DamagePacketEvent(DamagePacket packet);
     public event DamageReceiverEvent OnDeath;
     public event DamagePacketEvent OnTakeDamage;
+
+    private IDamageDealer _self;
+
+    private void Start()
+    {
+        _self = GetComponent<IDamageDealer>();
+    }
 
     // Method in charge of making this DamageReceiver have it's health decrement & receive knockback.
     // Takes in parameter damage of type DamagePacket.
@@ -35,7 +45,7 @@ public class DamageReceiver : MonoBehaviour
     public virtual void TakeDamage(DamagePacket damage, Vector2? hitPoint = null)
     {
         //Already dead don't do anything
-        if(_health <= 0)
+        if(!IsAlive)
         {
             return;
         }
@@ -47,10 +57,12 @@ public class DamageReceiver : MonoBehaviour
             if(damage.DamageAmount > 0)
             {
                 OnTakeDamage?.Invoke(damage);
+                Debug.Log(name + " takes " + damage.DamageAmount + " " + damage.Type + " damage from " + damage.DamageDealer);
+                damage.DamageDealer?.OnDamageDealtTo(this);
             }
         }
 
-        if(damage.DamageAmount > 0 && DamageFlashCoroutine == null)
+        if(damage.DamageAmount > 0 && DamageFlashCoroutine == null && DoDamageFlash)
         {
             DamageFlashCoroutine = StartCoroutine(DamageFlash());
         }
@@ -69,20 +81,22 @@ public class DamageReceiver : MonoBehaviour
             }
         }
 
-        if (_health <= 0)
+        if (!IsAlive && CanDie)
         {
-            Death();
+            Die(damage.DamageDealer);
         }
     }
 
-    protected virtual void Death()
+    public virtual void SetHealth(int amount)
     {
-        if (CanDie)
-        {
-            _health = -1;
+        _health = amount;
+    }
 
-            OnDeath?.Invoke(this);
-        }
+    public virtual void Die(IDamageDealer killer)
+    {
+        _health = -1;
+        killer.OnKilled(this);
+        OnDeath?.Invoke(this, killer);
     }
 
     public SpriteRenderer UnitSpriteRenderer;
@@ -105,4 +119,10 @@ public class DamageReceiver : MonoBehaviour
 
         DamageFlashCoroutine = null;
     }
+
+    //public void ForceStopDamageFlash()
+    //{
+    //    if (DamageFlashCoroutine != null)
+    //        StopCoroutine(DamageFlashCoroutine);
+    //}
 }

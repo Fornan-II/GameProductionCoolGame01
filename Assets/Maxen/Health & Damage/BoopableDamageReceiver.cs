@@ -13,6 +13,13 @@ public class BoopableDamageReceiver : DamageReceiver
 
     public event DamageReceiverEvent OnDealDamage;
 
+    private IDamageDealer _damageSource;
+
+    private void Awake()
+    {
+        _damageSource = GetComponent<IDamageDealer>();
+    }
+
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.tag.Contains("CanBoop") || _health <= 0)
@@ -30,21 +37,23 @@ public class BoopableDamageReceiver : DamageReceiver
         {
             //This DR is taking damage
             collision.rigidbody?.AddForce(Vector2.up * boopBoost, ForceMode2D.Impulse);
-            TakeDamage(new DamagePacket(DamageType.COLLISION, knockbackVector));
+
+            TakeDamage(new DamagePacket(DamageType.COLLISION, knockbackVector, collision.transform.GetComponent<IDamageDealer>()));
         }
         else
         {
             //Other DR is taking damage
-            Rigidbody2D rb;
-            if(TryGetComponent(out rb))
+            if(TryGetComponent(out Rigidbody2D rb))
             {
                 rb.AddForce(knockbackVector, ForceMode2D.Impulse);
             }
+
             DamageReceiver otherDR = collision.transform.GetComponent<DamageReceiver>();
-            otherDR?.TakeDamage(new DamagePacket(DamageType.COLLISION, damageAmount, -knockbackVector));
+            otherDR?.TakeDamage(new DamagePacket(DamageType.COLLISION, damageAmount, -knockbackVector, _damageSource));
+
             if(otherDR)
             {
-                OnDealDamage?.Invoke(otherDR);
+                OnDealDamage?.Invoke(otherDR, _damageSource);
             }
         }
     }
