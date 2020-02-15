@@ -42,6 +42,8 @@ public class PlayerScript : MonoBehaviour, IDamageDealer
     [SerializeField] private GameObject rightWall;
     [SerializeField] private GameObject floor;
 
+    [SerializeField] private AnimationCurve deathTimeDilation = AnimationCurve.EaseInOut(0.0f, 0.0f, 1.0f, 1.0f);
+
     public GameObject restartManager;
 
     private void Start()
@@ -188,15 +190,35 @@ public class PlayerScript : MonoBehaviour, IDamageDealer
 
     private void Die(DamageReceiver reciever, IDamageDealer killer)
     {
+        Debug.Log("Dead");
         //playerDamageReceiver.DoDamageFlash = false;
         //playerDamageReceiver.ForceStopDamageFlash();
         //playerDamageReceiver.UnitSpriteRenderer.color = Color.red;
 
+        if(currentWeapon)
+            currentWeapon.enabled = false;
+        StartCoroutine(DeathTimeAnimation());
+
         menu.AllowPausing = false;
-        menu.ChangeMenuTo(2);
+        //menu.ChangeMenuTo(2);
 
         finalScoreText.text = string.Format("Your Final Score Is: {0}", (int)Score);
         //restartManager.SetActive(true);
+    }
+
+    private IEnumerator DeathTimeAnimation()
+    {
+        float animLength = deathTimeDilation.keys[deathTimeDilation.length - 1].time;
+        float animStartTime = Time.realtimeSinceStartup;
+
+        while (animLength >= Time.realtimeSinceStartup - animStartTime)
+        {
+            yield return null;
+            Time.timeScale = Mathf.Max(0.0f, deathTimeDilation.Evaluate(Time.realtimeSinceStartup - animStartTime));
+        }
+
+        TimeManager.ResumeTime();
+        menu.ChangeMenuTo(2);
     }
 
     private void OnTakeDamage(DamagePacket damage)
