@@ -9876,6 +9876,10 @@ MonoBehaviour:
   initialKnockback: 500
   gunTransform: {fileID: 4519220185785437427}
   currentWeapon: {fileID: 1940030329096078925}
+  SlowMotionRange: 10
+  SlowMotionLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
   torqueMultiplier: 1
   background: {fileID: 0}
   healthText: {fileID: 0}
@@ -10186,11 +10190,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1745768268920496626, guid: b947862235b96ff4bb5bce69f83a6c71,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b947862235b96ff4bb5bce69f83a6c71, type: 3}
