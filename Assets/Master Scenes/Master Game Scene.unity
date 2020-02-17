@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -154,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -6.4339285}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: -12.006, y: -6.4339}
+  m_SizeDelta: {x: 184.02, y: 48.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2403117
 MonoBehaviour:
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2114,6 +2114,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1121814076}
     m_Modifications:
+    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
+        type: 3}
+      propertyPath: m_Name
+      value: Ammo Pack (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2173,11 +2178,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.016666668
-      objectReference: {fileID: 0}
-    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
-        type: 3}
-      propertyPath: m_Name
-      value: Ammo Pack (1)
       objectReference: {fileID: 0}
     - target: {fileID: 316068250298158499, guid: 94619834531d91345a3a77498543947c,
         type: 3}
@@ -2706,6 +2706,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1121814076}
     m_Modifications:
+    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
+        type: 3}
+      propertyPath: m_Name
+      value: Ammo Pack
+      objectReference: {fileID: 0}
     - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2765,11 +2770,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.01666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
-        type: 3}
-      propertyPath: m_Name
-      value: Ammo Pack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94619834531d91345a3a77498543947c, type: 3}
@@ -3005,6 +3005,11 @@ PrefabInstance:
     - target: {fileID: 3757107824803939786, guid: 44f808b847d19514baeb47bea8614362,
         type: 3}
       propertyPath: m_ScaleFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757107824803939786, guid: 44f808b847d19514baeb47bea8614362,
+        type: 3}
+      propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3757107825463606212, guid: 44f808b847d19514baeb47bea8614362,
@@ -5448,6 +5453,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
+        type: 3}
+      propertyPath: m_Name
+      value: Health Pack
+      objectReference: {fileID: 0}
     - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5502,11 +5512,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
-        type: 3}
-      propertyPath: m_Name
-      value: Health Pack
       objectReference: {fileID: 0}
     - target: {fileID: 316068250298158499, guid: 94619834531d91345a3a77498543947c,
         type: 3}
@@ -6647,6 +6652,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1121814076}
     m_Modifications:
+    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
+        type: 3}
+      propertyPath: m_Name
+      value: Ammo Pack (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 316068250589056893, guid: 94619834531d91345a3a77498543947c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6706,11 +6716,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.016666668
-      objectReference: {fileID: 0}
-    - target: {fileID: 316068250589056641, guid: 94619834531d91345a3a77498543947c,
-        type: 3}
-      propertyPath: m_Name
-      value: Ammo Pack (2)
       objectReference: {fileID: 0}
     - target: {fileID: 316068250298158499, guid: 94619834531d91345a3a77498543947c,
         type: 3}
@@ -7749,7 +7754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -165.68, y: -41.399994}
+  m_AnchoredPosition: {x: -163.185, y: -37.244995}
   m_SizeDelta: {x: 326.37, y: 74.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757559064
@@ -8227,10 +8232,10 @@ RectTransform:
   m_Father: {fileID: 591530220}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.660278, y: -6}
-  m_SizeDelta: {x: 100, y: 36.84}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.89380705, y: 0.9086242}
+  m_AnchoredPosition: {x: 0.33972168, y: -4}
+  m_SizeDelta: {x: -86, y: -7.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1899040034
 MonoBehaviour:
