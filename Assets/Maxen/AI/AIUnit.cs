@@ -5,7 +5,7 @@ using UnityEngine;
 //Generic AI
 //No movement or attack patterns.
 //Other AI types inherit from this class
-public class AIUnit : MonoBehaviour
+public class AIUnit : MonoBehaviour, IDamageDealer
 {
     //Stop processing at a distance, and then at a closer distance, start processing.
     //Two vars so that player doing small movements at the cusp doesn't constantly trigger this
@@ -19,8 +19,8 @@ public class AIUnit : MonoBehaviour
     //weaponScript;
 
     public bool LetProcessAI = true;
-    [SerializeField]
-    protected bool _isProcessing = false;
+    [SerializeField] protected bool _isProcessing = false;
+    [SerializeField] protected float _deathDestroyDelay = 3.0f;
 
     public int DeathHealthReward = 3;
 
@@ -71,7 +71,7 @@ public class AIUnit : MonoBehaviour
         }
     }
 
-    protected virtual void DefaultOnDeath(DamageReceiver dr)
+    protected virtual void DefaultOnDeath(DamageReceiver dr, IDamageDealer killer)
     {
         LetProcessAI = false;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -81,18 +81,17 @@ public class AIUnit : MonoBehaviour
         }
         rb.freezeRotation = false;
 
-        //Character has to be on player screen in order to reward the player for killing them.
-        //This is because bullets travel very far and often when shooting downwards, your going to hit *some* previously spawned enemy.
-        Renderer renderer = GetComponent<Renderer>();
-        if (renderer)
-        {
-            if (renderer.isVisible)
-            {
-                PlayerScript.Instance?.AddHealth(DeathHealthReward);
-            }
-        }
-
         GetComponentInChildren<ParticleSystem>().Play();
-        Destroy(gameObject, 3.0f);
+        Destroy(gameObject, _deathDestroyDelay);
+    }
+
+    public virtual void OnDamageDealtTo(DamageReceiver dr)
+    {
+        
+    }
+
+    public virtual void OnKilled(DamageReceiver dr)
+    {
+        
     }
 }

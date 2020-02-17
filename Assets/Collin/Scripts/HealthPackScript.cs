@@ -22,7 +22,7 @@ public class HealthPackScript : MonoBehaviour
     {
         if (hit.tag.Contains("Player"))
         {
-            PlayerScript.Instance.AddHealth(healthToAdd);
+            PlayerScript.Instance.GiveHealth(healthToAdd, transform);
             Destroy(gameObject);
         }
     }

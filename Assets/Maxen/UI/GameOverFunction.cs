@@ -15,7 +15,7 @@ public class GameOverFunction : MonoBehaviour
     {
         //Prep score value for saving
         if (nameEntry)
-            nameEntry.score = Mathf.FloorToInt(PlayerScript.Instance.transform.position.y);
+            nameEntry.score = (int)PlayerScript.Instance.Score;
 
         transform.localScale = Vector3.one * 2;
         iTween.ScaleTo(gameObject, iTween.Hash("scale", Vector3.one, "time", 2, "easetype", iTween.EaseType.easeOutElastic));

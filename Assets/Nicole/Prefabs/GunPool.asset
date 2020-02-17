@@ -37,8 +37,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    prefab: {fileID: 8002466081474241784, guid: 577f0cd8eb4b205489237c138ee76be8,
-      type: 3}
+    prefab: {fileID: 0}
   - weight:
       serializedVersion: 2
       m_Curve:

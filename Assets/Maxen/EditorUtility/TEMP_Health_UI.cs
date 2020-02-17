@@ -18,13 +18,13 @@ public class TEMP_Health_UI : MonoBehaviour
     {
         if(PlayerScript.Instance)
         {
-            if(PlayerScript.Instance.currentHealth <= 0)
+            if(PlayerScript.Instance.CurrentHealth <= 0)
             {
                 healthText.text = "0";
             }
             else
             {
-                healthText.text = PlayerScript.Instance.currentHealth.ToString();
+                healthText.text = PlayerScript.Instance.CurrentHealth.ToString();
             }
         }
     }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Minigun : Gun
 {
-    public override void Shoot()
+    public override void Shoot(IDamageDealer shooter)
     {
-        StartCoroutine(ShootXBulletsForYSeconds(3, 0.5f));
+        StartCoroutine(ShootXBulletsForYSeconds(3, 0.5f, shooter));
     }
 }

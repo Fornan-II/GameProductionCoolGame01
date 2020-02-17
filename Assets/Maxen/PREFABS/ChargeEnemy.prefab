@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 1994584632874644923}
   - component: {fileID: 1994584632874644912}
   - component: {fileID: 1994584632874644921}
-  - component: {fileID: 2325642570074690764}
+  - component: {fileID: -6525131579120828114}
   m_Layer: 9
   m_Name: ChargeEnemy
   m_TagString: Untagged
@@ -542,7 +542,7 @@ MonoBehaviour:
   ResistCollisionDamage: 0
   ResistExplosionDamage: 0
   ResistKnockback: 0
-  UnitSpriteRenderer: {fileID: 9036781968173279735}
+  UnitSpriteRenderer: {fileID: 1994584632874644916}
   DamageRecievingAngle: 63
   knockbackStrength: 13
   boopBoost: 13
@@ -609,6 +609,7 @@ MonoBehaviour:
   movement: {fileID: 1994584632874644921}
   LetProcessAI: 1
   _isProcessing: 0
+  _deathDestroyDelay: 3
   DeathHealthReward: 2
 --- !u!114 &1994584632874644921
 MonoBehaviour:
@@ -631,25 +632,19 @@ MonoBehaviour:
   aggroYDistance: 3
   chargeSpeed: 13
   chargeLerpRate: 0.07
---- !u!114 &2325642570074690764
+--- !u!114 &-6525131579120828114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994584632874644920}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 060ccebdb732c0d4bb22d210f273768d, type: 3}
+  m_Script: {fileID: 11500000, guid: f29b6cca4d0eea147a8276c9f43e5b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionData:
-    BaseDamageAmount: 5
-    EffectiveRadius: 10
-    BaseKnockbackStrength: 10
-  explosionParticles: {fileID: 4625334255841003871, guid: a6da427e5a9991342bfd4c1782af2f94,
-    type: 3}
-  _damageReceiver: {fileID: 1994584632874644917}
+  _isTargetable: 1
 --- !u!1 &2345849770645808714
 GameObject:
   m_ObjectHideFlags: 0

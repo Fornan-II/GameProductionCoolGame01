@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour, IDamageDealer
 {
     //Singleton
     public static PlayerScript Instance;
     //The players rigidbody
     private Rigidbody2D playerRig;
-
-    private bool alive = false;
-    private bool dying = false;
 
     [SerializeField] private int timeTilStart = 10;
     [SerializeField] private float initialKnockback = 500.0f;
@@ -25,14 +22,12 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject background;
 
     [SerializeField] private TextMeshProUGUI healthText;
-    [SerializeField] private ParticleSystem healthParticle;
     [SerializeField] private ParticleSystem damageParticle;
-    [SerializeField] private int maxHealth = 25;
-    public int currentHealth
-    {
-        get;
-        private set;
-    }
+    [SerializeField] private MoveToTarget healthParticle;
+
+    [SerializeField] private int maxHealth = 5;
+    [SerializeField] private DamageReceiver playerDamageReceiver;
+    public int CurrentHealth { get { return playerDamageReceiver.Health; } }
 
     [SerializeField] private MenuScript menu;
     [SerializeField]
@@ -41,14 +36,13 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI finalScoreText;
 
-    private float score;
-
-    [SerializeField] private int timeTilDeath = 5;
-    [SerializeField] private int timeTilDeathBuffer = 10;
+    public float Score { get; private set; }
 
     [SerializeField] private GameObject leftWall;
     [SerializeField] private GameObject rightWall;
     [SerializeField] private GameObject floor;
+
+    [SerializeField] private AnimationCurve deathTimeDilation = AnimationCurve.EaseInOut(0.0f, 0.0f, 1.0f, 1.0f);
 
     public GameObject restartManager;
 
@@ -63,17 +57,15 @@ public class PlayerScript : MonoBehaviour
             Destroy(gameObject);
         }
         playerRig = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
-
 
         CountDownToStart(timeTilStart);
-        StartCoroutine(GroundCheck());
+        //StartCoroutine(GroundCheck());
 
         //Get the DamageReceiver and hook it's OnTakeDamageEvent to this script so that enemies can hurt the player's health
-        DamageReceiver playerDamageReceiver = GetComponent<DamageReceiver>();
         if (playerDamageReceiver)
         {
-            playerDamageReceiver.OnTakeDamage += TakeDamage;
+            playerDamageReceiver.OnTakeDamage += OnTakeDamage;
+            playerDamageReceiver.OnDeath += Die;
         }
 
         currentWeapon.OnEquip();
@@ -84,8 +76,7 @@ public class PlayerScript : MonoBehaviour
         playerRig.AddForce(Vector2.up * initialKnockback);
         playerRig.AddTorque(torqueMultiplier, ForceMode2D.Impulse);
 
-        alive = true;
-        while (alive)
+        while (playerDamageReceiver.IsAlive)
         {
             yield return null;
             playerRig.angularVelocity = Mathf.Clamp(playerRig.angularVelocity, 200, Mathf.Infinity);
@@ -95,7 +86,6 @@ public class PlayerScript : MonoBehaviour
                 Shoot();
             }
         }
-        Die();
     }
 
     private void Update()
@@ -103,26 +93,10 @@ public class PlayerScript : MonoBehaviour
         CameraMovement();
         BackgroundScroll();
         ClampTransform();
-        Score();
+        ManageScore();
     }
 
-    private void OnCollisionEnter2D(Collision2D hit)
-    {
-        if (hit.transform.tag == "Floor" && alive && !dying)
-        {
-            dying = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D hit)
-    {
-        if (hit.transform.tag == "Floor" && alive)
-        {
-            dying = false;
-        }
-    }
-
-    private void Score()
+    private void ManageScore()
     {
         if (!scoreText)
             return;
@@ -135,12 +109,12 @@ public class PlayerScript : MonoBehaviour
         {
             scoreText.color = Color.red;
         }
-        if (alive && transform.position.y > 0)
+        if (playerDamageReceiver.IsAlive && transform.position.y > 0)
         {
-            if(transform.position.y > score)
+            if(transform.position.y > Score)
             {
-                score = transform.position.y;
-                scoreText.text = "Score: " + (int)score;
+                Score = transform.position.y;
+                scoreText.text = "Score: " + (int)Score;
             }
             
         }
@@ -167,7 +141,7 @@ public class PlayerScript : MonoBehaviour
         else
             playerRig.AddTorque(-torqueMultiplier, ForceMode2D.Impulse);
 
-        currentWeapon.Shoot();
+        currentWeapon.Shoot(this);
     }
     //Keeps the camera locked to the player
     private void CameraMovement()
@@ -192,12 +166,6 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
-    public void AddHealth(int aAmount)
-    {
-        //Health can not exceed maxHealth
-        currentHealth = Mathf.Min(maxHealth, currentHealth + aAmount);
-        healthParticle.Play();
-    }
 
     public void Stall()
     {
@@ -219,74 +187,46 @@ public class PlayerScript : MonoBehaviour
             "oncompleteparams", aCurrentNumber - 1,
             "oncompletetarget", gameObject));
     }
-    private void CountDownToDeath(int aCurrentNumber)
+
+    private void Die(DamageReceiver reciever, IDamageDealer killer)
     {
-        if (!dying)
-        {
-            timerText.gameObject.transform.localScale = Vector3.zero;
-            return;
-        }
+        Debug.Log("Dead");
+        //playerDamageReceiver.DoDamageFlash = false;
+        //playerDamageReceiver.ForceStopDamageFlash();
+        //playerDamageReceiver.UnitSpriteRenderer.color = Color.red;
 
-        if (aCurrentNumber == 0)
-        {
-            timerText.gameObject.transform.localScale = Vector3.zero;
-            alive = false;
-            return;
-        }
-
-        timerText.text = aCurrentNumber.ToString();
-        timerText.gameObject.transform.localScale = Vector3.one * 4;
-        iTween.ScaleTo(timerText.gameObject, iTween.Hash("scale", Vector3.one, "time", 1, "easetype", iTween.EaseType.easeOutElastic,
-            "oncomplete", "CountDownToDeath",
-            "oncompleteparams", aCurrentNumber - 1,
-            "oncompletetarget", gameObject));
-    }
-
-    private IEnumerator GroundCheck()
-    {
-        while (true)
-        {
-            yield return new WaitUntil(() => dying);
-            int timer = timeTilDeathBuffer;
-            while (timer > 0)
-            {
-                yield return new WaitForSeconds(1);
-                timer--;
-                if (!dying)
-                    break;
-            }
-            if (dying)
-            {
-                CountDownToDeath(timeTilDeath);
-            }
-            yield return new WaitUntil(() => !dying);
-        }
-
-    }
-
-    private void Die()
-    {
-        GetComponent<SpriteRenderer>().color = Color.red;
+        if(currentWeapon)
+            currentWeapon.enabled = false;
+        StartCoroutine(DeathTimeAnimation());
 
         menu.AllowPausing = false;
-        menu.ChangeMenuTo(2);
+        //menu.ChangeMenuTo(2);
 
-        finalScoreText.text = string.Format("Your Final Score Is: {0}", (int)score);
+        finalScoreText.text = string.Format("Your Final Score Is: {0}", (int)Score);
         //restartManager.SetActive(true);
     }
 
-    private void TakeDamage(DamagePacket damage)
+    private IEnumerator DeathTimeAnimation()
+    {
+        float animLength = deathTimeDilation.keys[deathTimeDilation.length - 1].time;
+        float animStartTime = Time.realtimeSinceStartup;
+
+        while (animLength >= Time.realtimeSinceStartup - animStartTime)
+        {
+            yield return null;
+            Time.timeScale = Mathf.Max(0.0f, deathTimeDilation.Evaluate(Time.realtimeSinceStartup - animStartTime));
+        }
+
+        TimeManager.ResumeTime();
+        menu.ChangeMenuTo(2);
+    }
+
+    private void OnTakeDamage(DamagePacket damage)
     {
         CameraFX.MainCamera.ScreenShake();
-        currentHealth -= damage.DamageAmount;
         healthText.gameObject.transform.localScale = Vector3.one * 3f;
         iTween.ScaleTo(healthText.gameObject, iTween.Hash("scale", Vector3.one, "time", 1f, "easetype", iTween.EaseType.easeOutElastic));
         damageParticle.Play();
-        if (currentHealth <= 0)
-        {
-            alive = false;
-        }
-        //Check for if less than 0 and die
     }
 
     public void SetCurrentWeapon(Gun aGun)
@@ -302,5 +242,26 @@ public class PlayerScript : MonoBehaviour
         aGun.OnEquip();
     }
 
-    
+    public void OnDamageDealtTo(DamageReceiver dr)
+    {
+        //Unused, required to satisify IDamageDealer
+    }
+
+    public void OnKilled(DamageReceiver dr)
+    {
+        if(dr.TryGetComponent(out AIUnit aiVictim))
+        {
+            GiveHealth(aiVictim.DeathHealthReward, aiVictim.transform);
+        }
+    }
+
+    public void GiveHealth(int amount, Transform source)
+    {
+        if(playerDamageReceiver.IsAlive)
+        {
+            playerDamageReceiver.SetHealth(Mathf.Min(playerDamageReceiver.Health + amount, maxHealth));
+        }
+
+        Instantiate(healthParticle, source.position, source.transform.rotation).DoMovement(transform, true, false);
+    }
 }

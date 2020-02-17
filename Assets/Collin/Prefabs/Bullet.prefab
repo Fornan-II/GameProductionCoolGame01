@@ -97,10 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 68.8
-  timeTilDestroy: 10
+  timeTilDestroy: 0.1
   Damage: 1
   KnockbackScalar: 0.5
   bulletRig: {fileID: 903772679302807138}
+  _renderer: {fileID: 903772679302807150}
 --- !u!50 &903772679302807138
 Rigidbody2D:
   serializedVersion: 4
