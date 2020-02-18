@@ -35,6 +35,7 @@ public class PlayerScript : MonoBehaviour, IDamageDealer
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI finalScoreText;
+    [SerializeField] private TextMeshProUGUI controlText;
 
     public float Score { get; private set; }
 
@@ -177,6 +178,7 @@ public class PlayerScript : MonoBehaviour, IDamageDealer
         if (aCurrentNumber == 0)
         {
             timerText.gameObject.transform.localScale = Vector3.zero;
+            controlText.gameObject.transform.localScale = Vector3.zero;
             StartCoroutine(PlayerInput());
             return;
         }
